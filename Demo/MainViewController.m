@@ -35,9 +35,7 @@
     [super viewDidLoad];
     [self initData];
     [self createContentView];
-    
-    
-    
+    //test
     // Do any additional setup after loading the view.
 }
 
