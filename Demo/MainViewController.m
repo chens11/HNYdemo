@@ -10,6 +10,7 @@
 #import "HNYTRefreshTableViewController.h"
 #import "HNYBaseViewController.h"
 #import "HNYTActionSheetViewController.h"
+#import "HNYTSQLite3ViewController.h"
 
 @interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) NSMutableArray *dataList;
@@ -45,6 +46,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    
     [super viewWillAppear:animated];
     self.tableController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 }
@@ -109,6 +111,10 @@
         HNYTActionSheetViewController *controller = [[HNYTActionSheetViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
     }
+    else if ([@"Test sqlite3" isEqualToString:controllerType]){
+        HNYTSQLite3ViewController *controller = [[HNYTSQLite3ViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
     else if ([@"Test tab bar" isEqualToString:controllerType]){
     }
     else if ([@"Test tab bar" isEqualToString:controllerType]){
@@ -132,6 +138,8 @@
     NSDictionary *testActionSheet = [NSDictionary dictionaryWithObjectsAndKeys:@"Test Action Sheet and popover ",@"title",@"Test Action Sheet",@"type", nil];
     [self.dataList addObject:testActionSheet];
     
+    NSDictionary *testSqlite3 = [NSDictionary dictionaryWithObjectsAndKeys:@"Test sqlite3 ",@"title",@"Test sqlite3",@"type", nil];
+    [self.dataList addObject:testSqlite3];
 
 }
 

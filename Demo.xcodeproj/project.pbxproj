@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0302615619177EF10096636E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0302615519177EF10096636E /* libsqlite3.dylib */; };
+		0302615919177F410096636E /* HNYTSQLite3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0302615819177F410096636E /* HNYTSQLite3ViewController.m */; };
 		03328D4C190101F0006C5461 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03328D4B190101F0006C5461 /* PopoverView.m */; };
 		0373BB54190F338D00FAC72E /* HNTAutorotateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0373BB53190F338D00FAC72E /* HNTAutorotateViewController.m */; };
 		0374411418FB7E0C00736C08 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0374411318FB7E0C00736C08 /* EGORefreshTableHeaderView.m */; };
@@ -57,6 +59,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0302615519177EF10096636E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		0302615719177F410096636E /* HNYTSQLite3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYTSQLite3ViewController.h; sourceTree = "<group>"; };
+		0302615819177F410096636E /* HNYTSQLite3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYTSQLite3ViewController.m; sourceTree = "<group>"; };
 		03328D461900DE18006C5461 /* HNYPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYPopoverView.h; sourceTree = "<group>"; };
 		03328D471900DE18006C5461 /* HNYPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYPopoverView.m; sourceTree = "<group>"; };
 		03328D4A190101F0006C5461 /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
@@ -121,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0302615619177EF10096636E /* libsqlite3.dylib in Frameworks */,
 				CA0FB93118F9800F00BC251D /* CoreGraphics.framework in Frameworks */,
 				CA0FB93518F9800F00BC251D /* CoreData.framework in Frameworks */,
 				CA0FB93318F9800F00BC251D /* UIKit.framework in Frameworks */,
@@ -142,6 +148,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0302615419177ED50096636E /* SQLite3 */ = {
+			isa = PBXGroup;
+			children = (
+				0302615719177F410096636E /* HNYTSQLite3ViewController.h */,
+				0302615819177F410096636E /* HNYTSQLite3ViewController.m */,
+			);
+			path = SQLite3;
+			sourceTree = "<group>";
+		};
 		03328D451900DDEA006C5461 /* Popover */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +221,7 @@
 		CA0FB92D18F9800F00BC251D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0302615519177EF10096636E /* libsqlite3.dylib */,
 				CA0FB92E18F9800F00BC251D /* Foundation.framework */,
 				CA0FB93018F9800F00BC251D /* CoreGraphics.framework */,
 				CA0FB93218F9800F00BC251D /* UIKit.framework */,
@@ -320,6 +336,7 @@
 		CAE7A1CC18FAEAB800213ACF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0302615419177ED50096636E /* SQLite3 */,
 				0373BB51190F333500FAC72E /* StatusBar */,
 				CAA6B6CD190C0DFA00D4192B /* BaseViewController */,
 				CAA6B6D0190C0DFA00D4192B /* NavigationBar */,
@@ -467,6 +484,7 @@
 				CAA6B6D6190C0DFA00D4192B /* HNYBaseViewController.m in Sources */,
 				CAA6B6D8190C0DFB00D4192B /* HNYTabBar.m in Sources */,
 				CA0FB96518F9877C00BC251D /* MainViewController.m in Sources */,
+				0302615919177F410096636E /* HNYTSQLite3ViewController.m in Sources */,
 				CAA6B6CA190C0D9400D4192B /* HNYDownTableView.m in Sources */,
 				0373BB54190F338D00FAC72E /* HNTAutorotateViewController.m in Sources */,
 			);
