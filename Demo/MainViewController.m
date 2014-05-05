@@ -41,7 +41,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    //test svn
     // Dispose of any resources that can be recreated.
 }
 
