@@ -11,6 +11,9 @@
 #import "HNYBaseViewController.h"
 #import "HNYTActionSheetViewController.h"
 #import "HNYTSQLite3ViewController.h"
+#import "HNYTArchivingViewController.h"
+#import "HNYTPListViewController.h"
+#import "HNYTCoreDataViewController.h"
 
 @interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) NSMutableArray *dataList;
@@ -115,6 +118,18 @@
         HNYTSQLite3ViewController *controller = [[HNYTSQLite3ViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
     }
+    else if ([@"data archiving" isEqualToString:controllerType]){
+        HNYTArchivingViewController *controller = [[HNYTArchivingViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else if ([@"save data to plist" isEqualToString:controllerType]){
+        HNYTPListViewController *controller = [[HNYTPListViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else if ([@"core data" isEqualToString:controllerType]){
+        HNYTCoreDataViewController *controller = [[HNYTCoreDataViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
     else if ([@"Test tab bar" isEqualToString:controllerType]){
     }
     else if ([@"Test tab bar" isEqualToString:controllerType]){
@@ -140,6 +155,16 @@
     
     NSDictionary *testSqlite3 = [NSDictionary dictionaryWithObjectsAndKeys:@"Test sqlite3 ",@"title",@"Test sqlite3",@"type", nil];
     [self.dataList addObject:testSqlite3];
+    
+    NSDictionary *archiving = [NSDictionary dictionaryWithObjectsAndKeys:@"Test data archiving ",@"title",@"data archiving",@"type", nil];
+    [self.dataList addObject:archiving];
+    
+    NSDictionary *plist = [NSDictionary dictionaryWithObjectsAndKeys:@"Test save data to plist ",@"title",@"save data to plist",@"type", nil];
+    [self.dataList addObject:plist];
+    
+    NSDictionary *coreData = [NSDictionary dictionaryWithObjectsAndKeys:@"Test core data ",@"title",@"core data",@"type", nil];
+    [self.dataList addObject:coreData];
+    
 
 }
 

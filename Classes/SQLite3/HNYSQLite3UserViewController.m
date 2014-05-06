@@ -69,24 +69,34 @@
     [self.view addSubview:addressLabel];
     [self.view addSubview:addressTextField];
     
+    UIButton *addButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    addButton.frame = CGRectMake(10, 235, 60, 35);
+    [addButton setTitle:@"add" forState:UIControlStateNormal];
+    [addButton addTarget:self action:@selector(addButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:addButton];
     
-    UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    saveButton.frame = CGRectMake(10, 235, 60, 35);
-    [saveButton setTitle:@"save" forState:UIControlStateNormal];
-    [saveButton addTarget:self action:@selector(saveButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:saveButton];
+    UIButton *updateButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    updateButton.frame = CGRectMake(80, 235, 60, 35);
+    [updateButton setTitle:@"update" forState:UIControlStateNormal];
+    [updateButton addTarget:self action:@selector(updateButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:updateButton];
+    
+    
+    UIButton *insertButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    insertButton.frame = CGRectMake(150, 235, 60, 35);
+    [insertButton setTitle:@"insert" forState:UIControlStateNormal];
+    [insertButton addTarget:self action:@selector(insertButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:insertButton];
     
     UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    searchButton.frame = CGRectMake(150, 235, 60, 35);
+    searchButton.frame = CGRectMake(220, 235, 60, 35);
     [searchButton setTitle:@"search" forState:UIControlStateNormal];
     [searchButton addTarget:self action:@selector(searchButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:searchButton];
-    
-    
 }
 
 #pragma mark - IBAction
-- (void)saveButton:(UIButton*)sender{
+- (void)addButton:(UIButton*)sender{
     [self.view endEditing:YES];
     //插入数据
     UITextField *nameField = (UITextField *)[self.view viewWithTag:1000];
@@ -102,6 +112,14 @@
     //打开数据库，如果没有就创建
     if (sqlite3_open([self.databaseFilePath UTF8String], &database) == SQLITE_OK) {
         //创建数据库表USER
+//        CREATE TABLE COMPANY(
+//                             ID INT PRIMARY KEY     NOT NULL,
+//                             NAME           TEXT    NOT NULL,
+//                             AGE            INT     NOT NULL,
+//                             ADDRESS        CHAR(50),
+//                             SALARY         REAL
+//                             );
+
         //        NSString *createSQL = @"CREATE TABLE IF NOT EXISTS USER (NAME TEXT PRIMARY KEY, PHONE TEXT,ADDRESS TEXT);";
         NSString *createSQL = @"create table if not exists user (name text primary key, phone text, address text);";
         char *errorMsg;
@@ -116,15 +134,14 @@
             }
             char *errorMsg = NULL;
             if (sqlite3_step(stmt) == SQLITE_DONE){
-                NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:nameField.text,@"name",phoneField.text,@"phone",addressField.text,@"address", nil];
-                [self.delegate viewController:self actionWitnInfo:dictionary];
+                [self.delegate viewController:self actionWitnInfo:nil];
+                [self.navigationController popViewControllerAnimated:YES];
                 nameField.text = nil;
                 phoneField.text = nil;
                 addressField.text = nil;
             }else
                 NSAssert(0, @"更新数据库表FIELDS出错: %s", errorMsg);
             sqlite3_finalize(stmt);
-            [self.navigationController popViewControllerAnimated:YES];
         }else{
             sqlite3_close(database);
             NSAssert(0, @"创建数据库表错误: %s", errorMsg);
@@ -135,6 +152,45 @@
         NSLog(@"打开数据库失败");
     }
 }
+- (void)updateButton:(UIButton*)sender{
+//    UPDATE table_name
+//    SET column1 = value1, column2 = value2...., columnN = valueN
+//    WHERE [condition];
+    sqlite3 *database;
+    UITextField *nameField = (UITextField *)[self.view viewWithTag:1000];
+    UITextField *phoneField = (UITextField *)[self.view viewWithTag:1001];
+    UITextField *addressField = (UITextField *)[self.view viewWithTag:1002];
+    
+    if (sqlite3_open([self.databaseFilePath UTF8String], &database) == SQLITE_OK) {
+        NSString *insertSql = [NSString stringWithFormat:@"update user set name = \"%@\" ,phone = \"%@\", address = \"%@\" where name = \"%@\";",nameField.text,phoneField.text,addressField.text,nameField.text];
+        char *errmsg;
+        if (sqlite3_exec(database, [insertSql UTF8String], NULL, NULL, &errmsg) == SQLITE_OK) {
+            [self.delegate viewController:self actionWitnInfo:nil];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
+    sqlite3_close(database);
+}
+
+- (void)insertButton:(UIButton*)sender{
+//    INSERT INTO TABLE_NAME (column1, column2, column3,...columnN)]
+//    VALUES (value1, value2, value3,...valueN);
+    sqlite3 *database;
+    UITextField *nameField = (UITextField *)[self.view viewWithTag:1000];
+    UITextField *phoneField = (UITextField *)[self.view viewWithTag:1001];
+    UITextField *addressField = (UITextField *)[self.view viewWithTag:1002];
+
+    if (sqlite3_open([self.databaseFilePath UTF8String], &database) == SQLITE_OK) {
+        NSString *insertSql = [NSString stringWithFormat:@"insert into user (name,phone,address) values(\"%@\",\"%@\",\"%@\")",nameField.text,phoneField.text,addressField.text];
+        char *errmsg;
+        if (sqlite3_exec(database, [insertSql UTF8String], NULL, NULL, &errmsg) == SQLITE_OK) {
+            [self.delegate viewController:self actionWitnInfo:nil];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
+    sqlite3_close(database);
+}
+
 - (void)searchButton:(UIButton*)sender{
     //打开数据库
     sqlite3 *database;
@@ -144,7 +200,6 @@
         UITextField *addressField = (UITextField *)[self.view viewWithTag:1002];
         
         NSString *querySQL = [NSString stringWithFormat:@"SELECT NAME, PHONE, ADDRESS FROM user where name=\"%@\"",nameField.text];
-        
         sqlite3_stmt *statement;
         if (sqlite3_prepare_v2(database, [querySQL UTF8String], -1, &statement, nil) == SQLITE_OK) {
             //依次读取数据库表格FIELDS中每行的内容，并显示在对应的TextField
@@ -161,12 +216,8 @@
             }
             sqlite3_finalize(statement);
         }
-        
         sqlite3_close(database);
     }
-    
-    
 }
-
 
 @end

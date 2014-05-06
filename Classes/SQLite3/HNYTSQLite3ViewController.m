@@ -20,6 +20,10 @@
 
 @implementation HNYTSQLite3ViewController
 
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+    
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -44,6 +48,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.list = [self getDataFromDatabase];
     [self setupBarItem];
     [self createTable];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -51,7 +56,10 @@
 #pragma mark - create sub views
 
 - (void)setupBarItem{
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addUser:)];
+    UIBarButtonItem *editItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editTable:)];
+    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addUser:)];
+    
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:editItem,addItem, nil];
 }
 - (void)createTable{
     UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
@@ -86,6 +94,20 @@
     return 44;
 }
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        [self.list removeObjectAtIndex:indexPath.row];
+        [self deleteUserByName:cell.textLabel.text];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                         withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
 #pragma mark - IBAction
 - (void)addUser:(UIBarButtonItem*)sender{
     HNYSQLite3UserViewController *controller = [[HNYSQLite3UserViewController alloc] init];
@@ -93,15 +115,22 @@
     controller.databaseFilePath = self.databaseFilePath;
     [self.navigationController pushViewController:controller animated:YES];
 }
+- (void)editTable:(UIBarButtonItem*)sender{
+    UITableView *table = (UITableView*)[self.view viewWithTag:1111];
+    table.editing = !table.editing;
+}
 #pragma mark - PublicDelegate
 - (void)viewController:(HNYSQLite3UserViewController *)vController actionWitnInfo:(NSDictionary *)info{
     UITableView *table = (UITableView*)[self.view viewWithTag:1111];
+    
+    self.list = [self getDataFromDatabase];;
     [table reloadData];
 }
 
-- (NSMutableArray *)list{
-    sqlite3 *database;
+- (NSMutableArray*)getDataFromDatabase{
     NSMutableArray *array = [NSMutableArray array];
+    sqlite3 *database;
+
     if (sqlite3_open([self.databaseFilePath UTF8String], &database) == SQLITE_OK) {
         NSString *querrySql = @"select name, phone, address from user";
         sqlite3_stmt *stmt;
@@ -116,5 +145,19 @@
         
     }
     return array;
+}
+#pragma mark - database operation
+- (void)deleteUserByName:(NSString*)name{
+//    DELETE FROM table_name
+//    WHERE [condition];
+
+    sqlite3 *database;
+    if (sqlite3_open([self.databaseFilePath UTF8String], &database) == SQLITE_OK) {
+        NSString *deleteSql = [NSString stringWithFormat:@"delete from user where name = \"%@\"",name];
+        char *errorMsg;
+        if (sqlite3_exec(database, [deleteSql UTF8String], NULL, NULL,  &errorMsg) == SQLITE_OK) {
+            NSLog(@"delete data suceed");
+        }
+    }
 }
 @end
