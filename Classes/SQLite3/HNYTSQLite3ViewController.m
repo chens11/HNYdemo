@@ -8,9 +8,13 @@
 
 #import "HNYTSQLite3ViewController.h"
 #import "sqlite3.h"
-#define HNYDatabaseName @"/database.sqlite3"
+#import "HNYSQLite3UserViewController.h"
 
-@interface HNYTSQLite3ViewController ()
+
+#define HNYDatabaseName @"database.sqlite3"
+
+@interface HNYTSQLite3ViewController ()<UITableViewDataSource,UITableViewDelegate,PublicDelegate>
+@property (nonatomic,strong) NSMutableArray *list;
 
 @end
 
@@ -20,6 +24,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.list = [NSMutableArray array];
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *path = [paths objectAtIndex:0];
         NSString *dataBasePath = [path stringByAppendingPathComponent:HNYDatabaseName];
@@ -39,132 +44,77 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self createSubView];
+    [self setupBarItem];
+    [self createTable];
     self.view.backgroundColor = [UIColor whiteColor];
 }
 #pragma mark - create sub views
-- (void)createSubView{
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 100, 60, 35)];
-    nameLabel.text = @"名字:";
-    nameLabel.backgroundColor = [UIColor clearColor];
-    
-    UITextField *nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(75, 100, 150, 35)];
-    nameTextField.placeholder = @"请输入名字";
-    nameTextField.tag = 1000;
-    [self.view addSubview:nameLabel];
-    [self.view addSubview:nameTextField];
-    
-    UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 145, 60, 35)];
-    phoneLabel.text = @"号码:";
-    phoneLabel.backgroundColor = [UIColor clearColor];
-    
-    UITextField *phoneTextField = [[UITextField alloc] initWithFrame:CGRectMake(75, 145, 150, 35)];
-    phoneTextField.placeholder = @"请输入号码";
-    phoneTextField.tag = 1001;
-    [self.view addSubview:phoneLabel];
-    [self.view addSubview:phoneTextField];
 
-    UILabel *addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 190, 60, 35)];
-    addressLabel.text = @"地址:";
-    addressLabel.backgroundColor = [UIColor clearColor];
+- (void)setupBarItem{
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addUser:)];
+}
+- (void)createTable{
+    UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
+    table.tag = 1111;
+    table.dataSource = self;
+    table.delegate = self;
+    [self.view addSubview:table];
     
-    UITextField *addressTextField = [[UITextField alloc] initWithFrame:CGRectMake(75, 190, 150, 35)];
-    addressTextField.placeholder = @"请输入地址";
-    addressTextField.tag = 1002;
-    [self.view addSubview:addressLabel];
-    [self.view addSubview:addressTextField];
-    
-    
-    UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    saveButton.frame = CGRectMake(10, 235, 60, 35);
-    [saveButton setTitle:@"save" forState:UIControlStateNormal];
-    [saveButton addTarget:self action:@selector(saveButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:saveButton];
-    
-    UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    searchButton.frame = CGRectMake(150, 235, 60, 35);
-    [searchButton setTitle:@"search" forState:UIControlStateNormal];
-    [searchButton addTarget:self action:@selector(searchButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:searchButton];
+}
+#pragma mark - UITableViewDataSource,UITableViewDelegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.list.count;
+}
 
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellIdentify = @"UITableSqlite2Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentify];
+    }
+    NSDictionary *dictionary = [self.list objectAtIndex:indexPath.row];
+    cell.textLabel.text = [dictionary objectForKey:@"name"];
+    cell.detailTextLabel.text = [dictionary objectForKey:@"phone"];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 44;
 }
 
 #pragma mark - IBAction
-- (void)saveButton:(UIButton*)sender{
-    [self.view endEditing:YES];
+- (void)addUser:(UIBarButtonItem*)sender{
+    HNYSQLite3UserViewController *controller = [[HNYSQLite3UserViewController alloc] init];
+    controller.delegate = self;
+    controller.databaseFilePath = self.databaseFilePath;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+#pragma mark - PublicDelegate
+- (void)viewController:(HNYSQLite3UserViewController *)vController actionWitnInfo:(NSDictionary *)info{
+    UITableView *table = (UITableView*)[self.view viewWithTag:1111];
+    [table reloadData];
+}
 
+- (NSMutableArray *)list{
     sqlite3 *database;
+    NSMutableArray *array = [NSMutableArray array];
     if (sqlite3_open([self.databaseFilePath UTF8String], &database) == SQLITE_OK) {
-        //创建数据库表
-        NSString *createSQL = @"CREATE TABLE IF NOT EXISTS USER (NAME TEXT PRIMARY KEY, PHONE TEXT,ADDRESS TEXT);";
-        char *errorMsg;
-        if (sqlite3_exec(database, [createSQL UTF8String], NULL, NULL, &errorMsg) == SQLITE_OK) {
-            //向表格插入四行数据
-            //根据tag获得TextField
-            UITextField *nameField = (UITextField *)[self.view viewWithTag:1000];
-            UITextField *phoneField = (UITextField *)[self.view viewWithTag:1001];
-            UITextField *addressField = (UITextField *)[self.view viewWithTag:1002];
-            //使用约束变量插入数据
-            char *update = "INSERT OR REPLACE INTO USER (NAME, PHONE,ADDRESS) VALUES (?, ?,?);";
-            sqlite3_stmt *stmt;
-            if (sqlite3_prepare_v2(database, update, -1, &stmt, nil) == SQLITE_OK) {
-                sqlite3_bind_text(stmt, 1, [nameField.text UTF8String], -1, NULL);
-                sqlite3_bind_text(stmt, 2, [phoneField.text UTF8String], -1, NULL);
-                sqlite3_bind_text(stmt, 3, [addressField.text UTF8String], -1, NULL);
+        NSString *querrySql = @"select name, phone, address from user";
+        sqlite3_stmt *stmt;
+        if (sqlite3_prepare_v2(database, [querrySql UTF8String], -1, &stmt, NULL) == SQLITE_OK) {
+            while (sqlite3_step(stmt) == SQLITE_ROW) {
+                NSString *name = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 0)];
+                NSString *phone = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 1)];
+                NSString *address = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 2)];
+                [array addObject:[NSDictionary dictionaryWithObjectsAndKeys:name,@"name",phone,@"phone",address,@"address", nil]];
             }
-            char *errorMsg = NULL;
-            if (sqlite3_step(stmt) != SQLITE_DONE){
-                NSAssert(0, @"更新数据库表FIELDS出错: %s", errorMsg);
-            }else{
-                nameField.text = nil;
-                phoneField.text = nil;
-                addressField.text = nil;
-            }
-            sqlite3_finalize(stmt);
-        }else{
-            sqlite3_close(database);
-            NSAssert(0, @"创建数据库表错误: %s", errorMsg);
         }
+        
     }
-    else{
-        sqlite3_close(database);
-        NSLog(@"打开数据库失败");
-    }
+    return array;
 }
-- (void)searchButton:(UIButton*)sender{
-    //打开数据库
-    sqlite3 *database;
-    if (sqlite3_open([self.databaseFilePath UTF8String], &database) != SQLITE_OK) {
-        sqlite3_close(database);
-    }else{
-        UITextField *nameField = (UITextField *)[self.view viewWithTag:1000];
-        UITextField *phoneField = (UITextField *)[self.view viewWithTag:1001];
-        UITextField *addressField = (UITextField *)[self.view viewWithTag:1002];
-
-        NSString *querySQL = [NSString stringWithFormat:@"SELECT NAME, PHONE, ADDRESS FROM user where name=\"%@\"",nameField.text];
-
-        sqlite3_stmt *statement;
-        if (sqlite3_prepare_v2(database, [querySQL UTF8String], -1, &statement, nil) == SQLITE_OK) {
-            //依次读取数据库表格FIELDS中每行的内容，并显示在对应的TextField
-            if (sqlite3_step(statement) == SQLITE_ROW) {
-                //获得数据
-                char *nameData = (char *)sqlite3_column_text(statement, 0);
-                char *phoneData = (char *)sqlite3_column_text(statement, 1);
-                char *addressData = (char *)sqlite3_column_text(statement, 2);
-                //设置文本
-                
-                nameField.text = [NSString stringWithUTF8String:nameData];
-                phoneField.text = [NSString stringWithUTF8String:phoneData];
-                addressField.text = [NSString stringWithUTF8String:addressData];
-            }
-            sqlite3_finalize(statement);
-        }
-
-        sqlite3_close(database);
-    }
-    
-
-}
-
 @end

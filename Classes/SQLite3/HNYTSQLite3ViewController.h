@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HNYTSQLite3ViewController : UIViewController
-@property (copy, nonatomic) NSString *databaseFilePath;
-
-- (void)applicationWillResignActive:(NSNotification *)notification;
+@property (strong, nonatomic) NSString *databaseFilePath;
 
 @end

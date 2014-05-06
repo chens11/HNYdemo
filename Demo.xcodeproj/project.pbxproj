@@ -17,6 +17,7 @@
 		0374411E18FBA20500736C08 /* pullArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0374411A18FBA20500736C08 /* pullArrow@2x.png */; };
 		0374411F18FBA20500736C08 /* pullArrowDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 0374411B18FBA20500736C08 /* pullArrowDark.png */; };
 		0374412018FBA20500736C08 /* pullArrowDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0374411C18FBA20500736C08 /* pullArrowDark@2x.png */; };
+		03836F3B1918739C00B771F8 /* HNYSQLite3UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03836F3A1918739C00B771F8 /* HNYSQLite3UserViewController.m */; };
 		03863E4B19108BF80098AC3E /* HNYTActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03863E4A19108BF80098AC3E /* HNYTActionSheetViewController.m */; };
 		CA0FB92F18F9800F00BC251D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0FB92E18F9800F00BC251D /* Foundation.framework */; };
 		CA0FB93118F9800F00BC251D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0FB93018F9800F00BC251D /* CoreGraphics.framework */; };
@@ -76,6 +77,9 @@
 		0374411A18FBA20500736C08 /* pullArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pullArrow@2x.png"; sourceTree = "<group>"; };
 		0374411B18FBA20500736C08 /* pullArrowDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pullArrowDark.png; sourceTree = "<group>"; };
 		0374411C18FBA20500736C08 /* pullArrowDark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pullArrowDark@2x.png"; sourceTree = "<group>"; };
+		03836F391918739C00B771F8 /* HNYSQLite3UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYSQLite3UserViewController.h; sourceTree = "<group>"; };
+		03836F3A1918739C00B771F8 /* HNYSQLite3UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYSQLite3UserViewController.m; sourceTree = "<group>"; };
+		03836F3F191874C200B771F8 /* PublicDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublicDelegate.h; sourceTree = "<group>"; };
 		03863E4919108BF80098AC3E /* HNYTActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYTActionSheetViewController.h; sourceTree = "<group>"; };
 		03863E4A19108BF80098AC3E /* HNYTActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYTActionSheetViewController.m; sourceTree = "<group>"; };
 		CA0FB92B18F9800F00BC251D /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +157,8 @@
 			children = (
 				0302615719177F410096636E /* HNYTSQLite3ViewController.h */,
 				0302615819177F410096636E /* HNYTSQLite3ViewController.m */,
+				03836F391918739C00B771F8 /* HNYSQLite3UserViewController.h */,
+				03836F3A1918739C00B771F8 /* HNYSQLite3UserViewController.m */,
 			);
 			path = SQLite3;
 			sourceTree = "<group>";
@@ -242,6 +248,7 @@
 				CA0FB96318F9877C00BC251D /* MainViewController.h */,
 				CA0FB96418F9877C00BC251D /* MainViewController.m */,
 				CAE7A1C318FAE75200213ACF /* PublicDefine.h */,
+				03836F3F191874C200B771F8 /* PublicDelegate.h */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -482,6 +489,7 @@
 				0374411418FB7E0C00736C08 /* EGORefreshTableHeaderView.m in Sources */,
 				03328D4C190101F0006C5461 /* PopoverView.m in Sources */,
 				CAA6B6D6190C0DFA00D4192B /* HNYBaseViewController.m in Sources */,
+				03836F3B1918739C00B771F8 /* HNYSQLite3UserViewController.m in Sources */,
 				CAA6B6D8190C0DFB00D4192B /* HNYTabBar.m in Sources */,
 				CA0FB96518F9877C00BC251D /* MainViewController.m in Sources */,
 				0302615919177F410096636E /* HNYTSQLite3ViewController.m in Sources */,
