@@ -13,8 +13,9 @@
 @property (nonatomic,strong) UIButton *cancelButton;
 @property (nonatomic,strong) UIButton *sureButton;
 @property (nonatomic,strong) UIView *contentView;
-@property (nonatomic,strong) UIView *view;
+@property (nonatomic,strong) UIView *backGroundView;
 @property (nonatomic,strong) UIButton *buttonClick;
+@property (nonatomic,strong) NSArray *stringAry;
 
 @end
 
@@ -25,7 +26,8 @@
     self = [super initWithFrame:CGRectZero];
     if (self) {
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognize:)];
-        [self addGestureRecognizer:tapGesture];
+        self.backGroundView = [[UIView alloc] init];
+        [self.backGroundView addGestureRecognizer:tapGesture];
     }
     return self;
 }
@@ -47,39 +49,25 @@
 + (HNYActionSheet *)showWithTitle:(NSString *)title withStringAry:(NSArray *)strAry cancelBtnTitle:(NSString *)cTitle sureBtnTitle:(NSString *)sTitle delegate:(id<HNYActionSheetDelegate>)delegate{
     HNYActionSheet *sheet = [[HNYActionSheet alloc] initWithFrame:CGRectZero];
     sheet.delegate = delegate;
-    sheet.stringAry = strAry;
-    
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    if (!window)
-        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
-    
-    UIView *topView = [[window subviews] objectAtIndex:0];
-    
-    float height  = 200;
-    if (height > strAry.count * HNYActionSheetStringAryCellHeight)
-        height = strAry.count * HNYActionSheetStringAryCellHeight;
-
-    UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, topView.frame.size.width, height) style:UITableViewStylePlain];
-    table.dataSource = sheet;
-    table.tag = 10000000;
-    table.delegate = sheet;
-    [sheet showWithTitle:title contentView:table cancelBtnTitle:cTitle sureBtnTitle:sTitle];
+    [sheet showWithTitle:title withStringAry:strAry cancelBtnTitle:cTitle sureBtnTitle:sTitle];
     [sheet show];
     return sheet;
 }
 
 #pragma mark - fun the hide and show HNYActionSheet
 - (void)hide{
-    CGRect frame = self.view.frame;
+    
+    CGRect frame = self.frame;
 
     if ([self.delegate respondsToSelector:@selector(hNYActionSheet:willDismissWithButtonIndex:)])
         [self.delegate hNYActionSheet:self willDismissWithButtonIndex:0];
     
     [UIView animateWithDuration:0.3f animations:^{
-        self.alpha = 0.1f;
-        self.view.frame = CGRectMake(frame.origin.x, self.frame.size.height, frame.size.width, frame.size.height);
+        self.backGroundView.alpha = 0.1f;
+        self.frame = CGRectMake(frame.origin.x, [self getTopViewOfTheWindow].frame.size.height, frame.size.width, frame.size.height);
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
+        [self.backGroundView removeFromSuperview];
         if ([self.delegate respondsToSelector:@selector(hNYActionSheet:didDismissWithButtonIndex:)])
             [self.delegate hNYActionSheet:self didDismissWithButtonIndex:self.buttonClick.tag];
     }];
@@ -87,19 +75,20 @@
 }
 
 - (void)show{
-    UIView *topView = [self getTopOfTheWindow];
+    UIView *topView = [self getTopViewOfTheWindow];
+    [topView addSubview:self.backGroundView];
     [topView addSubview:self];
 
-    CGRect frame = self.view.frame;
-    frame.origin.y = self.frame.size.height - self.view.frame.size.height;
-    self.view.frame = CGRectMake(frame.origin.x, self.frame.size.height, frame.size.width, frame.size.height);
+    CGRect frame = self.frame;
+    frame.origin.y = topView.frame.size.height - self.frame.size.height;
+    self.frame = CGRectMake(frame.origin.x, topView.frame.size.height, frame.size.width, frame.size.height);
 
     if ([self.delegate respondsToSelector:@selector(willPresentHNYActionSheet:)])
         [self.delegate willPresentHNYActionSheet:self];
     
     [UIView animateWithDuration:0.3f animations:^{
-        self.alpha = 0.7f;
-        self.view.frame = frame;
+        self.backGroundView.alpha = 0.7f;
+        self.frame = frame;
     } completion:^(BOOL finished) {
         if ([self.delegate respondsToSelector:@selector(didPresentHNYActionSheet:)]) {
             [self.delegate didPresentHNYActionSheet:self];
@@ -111,16 +100,7 @@
 #pragma mark  - UITapGestureRecognizer
 - (void)tapGestureRecognize:(UITapGestureRecognizer*)gesture{
     self.buttonClick = self.cancelButton;
-    CGPoint point = [gesture locationInView:self];
-    if (!CGRectContainsPoint(self.view.frame, point)) {
         [self hide];
-    }
-    if ([self.contentView isKindOfClass:[UITableView class]] && self.contentView.tag == 10000000) {
-        UITableView *table = (UITableView*)self.contentView;
-        CGPoint tPoint = [gesture locationInView:self.contentView];
-        [table selectRowAtIndexPath:[table indexPathForRowAtPoint:tPoint] animated:YES scrollPosition:UITableViewScrollPositionNone];
-        [self tableView:table didSelectRowAtIndexPath:[table indexPathForRowAtPoint:tPoint]];
-    }
 }
 #pragma mark - IBAction
 - (void)touchButton:(UIButton*)sender{
@@ -132,7 +112,7 @@
     
 }
 #pragma mark - Get tht key Window top view
-- (UIView*)getTopOfTheWindow{
+- (UIView*)getTopViewOfTheWindow{
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     if (!window)
         window = [[UIApplication sharedApplication].windows objectAtIndex:0];
@@ -171,11 +151,23 @@
 }
 
 #pragma mark - Create SubViews
+- (void)showWithTitle:(NSString *)title withStringAry:(NSArray *)strAry cancelBtnTitle:(NSString *)cTitle sureBtnTitle:(NSString *)sTitle{
+    self.stringAry = strAry;
+    UIView *topView = [self getTopViewOfTheWindow];
+    
+    float height  = 200;
+    if (height > strAry.count * HNYActionSheetStringAryCellHeight)
+        height = strAry.count * HNYActionSheetStringAryCellHeight;
+    
+    UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, topView.frame.size.width, height) style:UITableViewStylePlain];
+    table.dataSource = self;
+    table.delegate = self;
+    table.tag = 10000000;
+    [self showWithTitle:title contentView:table cancelBtnTitle:cTitle sureBtnTitle:sTitle];
+}
 
 - (void)showWithTitle:(NSString*)title contentView:(UIView *)cView cancelBtnTitle:(NSString *)cTitle sureBtnTitle:(NSString *)sTitle{
     
-    self.view = [[UIView alloc] init];
-    self.view.backgroundColor = [UIColor whiteColor];
     self.contentView = cView;
     
     self.titleLabel = [[UILabel alloc] init];
@@ -210,23 +202,24 @@
     [self.sureButton addTarget:self action:@selector(touchButton:) forControlEvents:UIControlEventTouchUpInside];
     
     if (title)
-        [self.view addSubview:self.titleLabel];
+        [self addSubview:self.titleLabel];
     if (cView)
-        [self.view addSubview:self.contentView];
+        [self addSubview:self.contentView];
     if (cTitle)
-        [self.view addSubview:self.cancelButton];
+        [self addSubview:self.cancelButton];
     if (sTitle)
-        [self.view addSubview:self.sureButton];
-    [self addSubview:self.view];
+        [self addSubview:self.sureButton];
     [self setTheFrame];
 }
+
+#pragma mark - set view frame
 - (void)setTheFrame{
     
-    UIView *topView = [self getTopOfTheWindow];
+    UIView *topView = [self getTopViewOfTheWindow];
     //设置self 的fram
-    self.layer.backgroundColor = [[UIColor lightGrayColor] CGColor];
-    self.layer.opacity = 0.1;
-    self.frame = topView.bounds;
+    self.backGroundView.layer.backgroundColor = [[UIColor lightGrayColor] CGColor];
+    self.backGroundView.layer.opacity = 0.1;
+    self.backGroundView.frame = topView.bounds;
 
     //计算titlLabel frame
     CGSize size = topView.bounds.size;
@@ -252,7 +245,7 @@
         height += HNYActionSheetButtonHeight;
     }
     
-    self.view.frame = CGRectMake(0, size.height - height, size.width, height);
+    self.frame = CGRectMake(0, size.height - height, size.width, height);
 
 }
 

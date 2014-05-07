@@ -39,13 +39,18 @@
 
 @interface HNYActionSheet : UIView
 @property (nonatomic,weak) id <HNYActionSheetDelegate> delegate;
-@property (nonatomic,strong) NSArray *stringAry;
+#pragma mark - Class Static show action sheet Methods
 
 //static class fun to create HNYActionSheet with title contentView cancelButton sureButton and delegate
 + (HNYActionSheet*)showWithTitle:(NSString*)title contentView:(UIView*)cView cancelBtnTitle:(NSString *)cTitle sureBtnTitle:(NSString *)sTitle delegate:(id<HNYActionSheetDelegate>)delegate;
 
 //static class fun to create HNYActionSheet with title string array cancelButton sureButton and delegate
 + (HNYActionSheet*)showWithTitle:(NSString*)title withStringAry:(NSArray*)strAry cancelBtnTitle:(NSString *)cTitle sureBtnTitle:(NSString *)sTitle delegate:(id<HNYActionSheetDelegate>)delegate;
+
+#pragma mark - Instance show action Methods
+
+//static class fun to create HNYActionSheet with title string array cancelButton sureButton and delegate
+- (void)showWithTitle:(NSString*)title withStringAry:(NSArray*)strAry cancelBtnTitle:(NSString *)cTitle sureBtnTitle:(NSString *)sTitle;
 
 //instance fun to create HNYActionSheet
 - (void)showWithTitle:(NSString*)title contentView:(UIView *)cView cancelBtnTitle:(NSString *)cTitle sureBtnTitle:(NSString *)sTitle;

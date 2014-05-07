@@ -6,6 +6,12 @@
 //  Copyright (c) 2014 chenzq. All rights reserved.
 //
 
+#define HNYArrowHeight 10.0;
+#define HNYArrowOffset 2.0f;
+#define HNYPopoverViewCornerRadius 4.0f;
+#define HNYPopoverViewTextFont 14.0f;
+#define HNYPopoverViewTitleFont 15.0f;
+
 #import <UIKit/UIKit.h>
 @class HNYPopoverView;
 
@@ -27,26 +33,38 @@
 @interface HNYPopoverView : UIView
 @property (nonatomic, assign) id <HNYPopoverViewDelegate> delegate;
 
-@property (nonatomic, retain) UIView *contentView;
-+ (HNYPopoverView *)showPopoverFromRect:(CGRect)rect inView:(UIView *)view withText:(NSString *)text delegate:(id<HNYPopoverViewDelegate>)delegate;
+#pragma mark - Class Static presenting Methods
+//These are the main static methods you can use to display the popover.
+//Simply call [PopoverView present...] with your arguments, and the popover will be generated, added to the view stack, and notify you when it's done.
++ (HNYPopoverView *)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withText:(NSString *)text delegate:(id<HNYPopoverViewDelegate>)delegate;
 
-+ (HNYPopoverView *)showPopoverFromRect:(CGRect)rect inView:(UIView *)view withTitle:(NSString *)title withText:(NSString *)text delegate:(id<HNYPopoverViewDelegate>)delegate;
-//
-//+ (HNYPopoverView *)showPopoverAtPoint:(CGPoint)point inView:(UIView *)view withViewArray:(NSArray *)viewArray delegate:(id<HNYPopoverViewDelegate>)delegate;
-//
-//+ (HNYPopoverView *)showPopoverAtPoint:(CGPoint)point inView:(UIView *)view withTitle:(NSString *)title withViewArray:(NSArray *)viewArray delegate:(id<HNYPopoverViewDelegate>)delegate;
-//
-//+ (HNYPopoverView *)showPopoverAtPoint:(CGPoint)point inView:(UIView *)view withStringArray:(NSArray *)stringArray delegate:(id<HNYPopoverViewDelegate>)delegate;
-//
-//+ (HNYPopoverView *)showPopoverAtPoint:(CGPoint)point inView:(UIView *)view withTitle:(NSString *)title withStringArray:(NSArray *)stringArray delegate:(id<HNYPopoverViewDelegate>)delegate;
-//
-//+ (HNYPopoverView *)showPopoverAtPoint:(CGPoint)point inView:(UIView *)view withTitle:(NSString *)title withContentView:(UIView *)cView delegate:(id<HNYPopoverViewDelegate>)delegate;
-//
-//+ (HNYPopoverView *)showPopoverAtPoint:(CGPoint)point inView:(UIView *)view withContentView:(UIView *)cView delegate:(id<HNYPopoverViewDelegate>)delegate;
++ (HNYPopoverView *)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withTitle:(NSString *)title withText:(NSString *)text delegate:(id<HNYPopoverViewDelegate>)delegate;
 
-- (void)showAtPoint:(CGPoint)point inView:(UIView *)view withText:(NSString *)text;
++ (HNYPopoverView *)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withContentView:(UIView *)cView delegate:(id<HNYPopoverViewDelegate>)delegate;
 
-- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view;
++ (HNYPopoverView *)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withTitle:(NSString *)title withContentView:(UIView *)cView delegate:(id<HNYPopoverViewDelegate>)delegate;
+
++ (HNYPopoverView *)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withStringAry:(NSArray*)strAry delegate:(id<HNYPopoverViewDelegate>)delegate;
+
++ (HNYPopoverView *)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withTitle:(NSString *)title withStringAry:(NSArray*)strAry delegate:(id<HNYPopoverViewDelegate>)delegate;
+
+#pragma mark - Instance presenting Methods
+//Adds/animates in the popover to the top of the view stack with the arrow pointing at the "point"
+//within the specified view.  The contentView will be added to the popover, and should have either
+//a clear color backgroundColor, or perhaps a rounded corner bg rect (radius 4.f if you're going to
+//round).
+
+- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withText:(NSString *)text;
+
+- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withTitle:(NSString *)title withText:(NSString *)text;
+
+- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withContentView:(UIView *)cView;
+
+- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withTitle:(NSString *)title withContentView:(UIView *)cView;
+
+- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withStringAry:(NSArray*)strAry ;
+
+- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withTitle:(NSString *)title withStringAry:(NSArray*)strAry;
 
 - (void)dismissPopoverAnimated:(BOOL)animated;
 

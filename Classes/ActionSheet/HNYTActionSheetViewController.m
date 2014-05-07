@@ -16,6 +16,7 @@ HNYPopoverViewDelegate,
 UIActionSheetDelegate>
 
 @property (nonatomic,strong) HNYActionSheet *sheet;
+@property (nonatomic,strong) HNYPopoverView *popover;
 
 @end
 
@@ -34,7 +35,7 @@ UIActionSheetDelegate>
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 7; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         button.tag = i;
         button.layer.borderColor = [[UIColor lightGrayColor] CGColor];
@@ -83,13 +84,15 @@ UIActionSheetDelegate>
         UILabel *label = [[UILabel alloc] init];
         label.frame = CGRectMake(0, 0, 100, 200);
         label.backgroundColor = [UIColor blackColor];
-        [HNYPopoverView showPopoverFromRect:sender.frame inView:self.view withTitle:@"test" withText:@"implemented -[<UIApplicationDelegate> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add to the list of your supported UIBackgroundModes in your Info.plis" delegate:self];
+        if (self.popover) {
+        }
+        self.popover = [HNYPopoverView presentPopoverFromRect:sender.frame inView:self.view withTitle:@"test" withText:@"implemented -[<UIApplicationDelegate> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add to the list of your supported UIBackgroundModes in your Info.plis" delegate:self];
     }
     else if (sender.tag == 4) {
         UILabel *label = [[UILabel alloc] init];
         label.frame = CGRectMake(0, 0, 100, 200);
         label.backgroundColor = [UIColor blackColor];
-        [HNYPopoverView showPopoverFromRect:sender.frame inView:self.view withTitle:@"test" withText:@"implemented -[<UIApplicationDelegate> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add to the list of your supported UIBackgroundModes in your Info.plis" delegate:self];
+        [HNYPopoverView presentPopoverFromRect:sender.frame inView:self.view withTitle:@"test" withText:@"implemented -[<UIApplicationDelegate> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add to the list of your supported UIBackgroundModes in your Info.plis" delegate:self];
     }
 
 }

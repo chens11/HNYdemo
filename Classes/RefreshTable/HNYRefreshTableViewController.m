@@ -195,7 +195,7 @@
             NSString *mainDescripiton;
             if ([self.delegate respondsToSelector:@selector(descriptionOfTableCellAtIndexPath:)])
                 mainDescripiton = [self.delegate descriptionOfTableCellAtIndexPath:indexPath];
-            self.longPressPopover = [HNYPopoverView showPopoverFromRect:cell.frame inView:self.view withText:mainDescripiton delegate:self];//[PopoverView showPopoverAtPoint:point inView:self.view withText:mainDescripiton delegate:self];
+            self.longPressPopover = [HNYPopoverView presentPopoverFromRect:cell.frame inView:self.view withText:mainDescripiton delegate:self];//[PopoverView showPopoverAtPoint:point inView:self.view withText:mainDescripiton delegate:self];
         }
         self.popIndexPath = indexPath;
     }
