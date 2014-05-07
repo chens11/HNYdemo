@@ -10,7 +10,12 @@
 #import "HNYActionSheet.h"
 #import "HNYPopoverView.h"
 
-@interface HNYTActionSheetViewController ()<HNYActionSheetDelegate,HNYPopoverViewDelegate,UIActionSheetDelegate>
+@interface HNYTActionSheetViewController ()
+<HNYActionSheetDelegate,
+HNYPopoverViewDelegate,
+UIActionSheetDelegate>
+
+@property (nonatomic,strong) HNYActionSheet *sheet;
 
 @end
 
@@ -53,27 +58,34 @@
     if (sender.tag == 0) {
         UILabel *label = [[UILabel alloc] init];
         label.frame = CGRectMake(0, 0, 100, 200);
-        label.backgroundColor = [UIColor blackColor];
-        [HNYPopoverView showPopoverFromRect:sender.frame inView:self.view withTitle:@"test" withText:@"implemented -[<UIApplicationDelegate> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add to the list of your supported UIBackgroundModes in your Info.plis" delegate:self];
-
-//        UILabel *label = [[UILabel alloc] init];
-//        label.frame = CGRectMake(0, 0, 100, 200);
-//        label.backgroundColor = [UIColor blackColor];
-//        [HNYActionSheet showWithTitle:@"Test ActionSheet With Content View" contentView:label cancelBtnTitle:@"Cancel" sureBtnTitle:@"Sure" delegate:self];
+        label.backgroundColor = [UIColor whiteColor];
+        if (self.sheet)
+            [self.sheet show];
+        else
+            self.sheet = [HNYActionSheet showWithTitle:@"Test ActionSheet With Content View" contentView:label cancelBtnTitle:@"Cancel" sureBtnTitle:@"Sure" delegate:self];
     }
     else if (sender.tag == 1) {
         UILabel *label = [[UILabel alloc] init];
         label.frame = CGRectMake(0, 0, 100, 200);
-        label.backgroundColor = [UIColor blackColor];
-        [HNYActionSheet showWithContentView:label delegate:self];
+        label.text = @"add custom view here";
+        label.backgroundColor = [UIColor whiteColor];
+        [HNYActionSheet showWithTitle:nil contentView:label cancelBtnTitle:nil sureBtnTitle:nil delegate:self];
     }
     else if (sender.tag == 2) {
+        NSMutableArray *array = [NSMutableArray array];
+        for (int i = 0; i< 5; i++) {
+            NSString *string = [NSString stringWithFormat:@"%@ + %d",[NSDate date],i];
+            [array addObject:string];
+        }
+        [HNYActionSheet showWithTitle:@"test string ary" withStringAry:array cancelBtnTitle:@"cancel" sureBtnTitle:@"sure" delegate:self];
+    }
+    else if (sender.tag == 3) {
         UILabel *label = [[UILabel alloc] init];
         label.frame = CGRectMake(0, 0, 100, 200);
         label.backgroundColor = [UIColor blackColor];
         [HNYPopoverView showPopoverFromRect:sender.frame inView:self.view withTitle:@"test" withText:@"implemented -[<UIApplicationDelegate> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add to the list of your supported UIBackgroundModes in your Info.plis" delegate:self];
     }
-    else if (sender.tag == 3) {
+    else if (sender.tag == 4) {
         UILabel *label = [[UILabel alloc] init];
         label.frame = CGRectMake(0, 0, 100, 200);
         label.backgroundColor = [UIColor blackColor];

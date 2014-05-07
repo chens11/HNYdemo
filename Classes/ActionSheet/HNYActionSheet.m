@@ -8,7 +8,7 @@
 
 #import "HNYActionSheet.h"
 
-@interface HNYActionSheet()<UIActionSheetDelegate>
+@interface HNYActionSheet()<UIActionSheetDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UILabel *titleLabel;
 @property (nonatomic,strong) UIButton *cancelButton;
 @property (nonatomic,strong) UIButton *sureButton;
@@ -39,16 +39,31 @@
     
     HNYActionSheet *sheet = [[HNYActionSheet alloc] initWithFrame:CGRectZero];
     sheet.delegate = delegate;
-    [sheet showWithTitle:title contentView:cView cancelBtnTitle:nil sureBtnTitle:nil];
+    [sheet showWithTitle:title contentView:cView cancelBtnTitle:cTitle sureBtnTitle:sTitle];
     [sheet show];
     return sheet;
 }
 
-+ (HNYActionSheet *)showWithContentView:(UIView *)cView delegate:(id<HNYActionSheetDelegate>)delegate{
-    
++ (HNYActionSheet *)showWithTitle:(NSString *)title withStringAry:(NSArray *)strAry cancelBtnTitle:(NSString *)cTitle sureBtnTitle:(NSString *)sTitle delegate:(id<HNYActionSheetDelegate>)delegate{
     HNYActionSheet *sheet = [[HNYActionSheet alloc] initWithFrame:CGRectZero];
     sheet.delegate = delegate;
-    [sheet showWithTitle:nil contentView:cView cancelBtnTitle:nil sureBtnTitle:nil];
+    sheet.stringAry = strAry;
+    
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    if (!window)
+        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
+    
+    UIView *topView = [[window subviews] objectAtIndex:0];
+    
+    float height  = 200;
+    if (height > strAry.count * HNYActionSheetStringAryCellHeight)
+        height = strAry.count * HNYActionSheetStringAryCellHeight;
+
+    UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, topView.frame.size.width, height) style:UITableViewStylePlain];
+    table.dataSource = sheet;
+    table.tag = 10000000;
+    table.delegate = sheet;
+    [sheet showWithTitle:title contentView:table cancelBtnTitle:cTitle sureBtnTitle:sTitle];
     [sheet show];
     return sheet;
 }
@@ -72,14 +87,11 @@
 }
 
 - (void)show{
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    if (!window)
-        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
-    
-    UIView *topView = [[window subviews] objectAtIndex:0];
+    UIView *topView = [self getTopOfTheWindow];
     [topView addSubview:self];
 
     CGRect frame = self.view.frame;
+    frame.origin.y = self.frame.size.height - self.view.frame.size.height;
     self.view.frame = CGRectMake(frame.origin.x, self.frame.size.height, frame.size.width, frame.size.height);
 
     if ([self.delegate respondsToSelector:@selector(willPresentHNYActionSheet:)])
@@ -103,6 +115,12 @@
     if (!CGRectContainsPoint(self.view.frame, point)) {
         [self hide];
     }
+    if ([self.contentView isKindOfClass:[UITableView class]] && self.contentView.tag == 10000000) {
+        UITableView *table = (UITableView*)self.contentView;
+        CGPoint tPoint = [gesture locationInView:self.contentView];
+        [table selectRowAtIndexPath:[table indexPathForRowAtPoint:tPoint] animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [self tableView:table didSelectRowAtIndexPath:[table indexPathForRowAtPoint:tPoint]];
+    }
 }
 #pragma mark - IBAction
 - (void)touchButton:(UIButton*)sender{
@@ -113,12 +131,51 @@
     [self hide];
     
 }
+#pragma mark - Get tht key Window top view
+- (UIView*)getTopOfTheWindow{
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    if (!window)
+        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
+    return [[window subviews] objectAtIndex:0];
+}
 
+#pragma mark - UITableViewDataSource,UITableViewDelegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.stringAry.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return HNYActionSheetStringAryCellHeight;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellIdentify = @"ActionSheetCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+    }
+    cell.textLabel.text = [self.stringAry objectAtIndex:indexPath.row];
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([self.delegate respondsToSelector:@selector(hNYActionSheetCancel:didSelectStringAryAtIndex:)]) {
+        [self.delegate hNYActionSheetCancel:self didSelectStringAryAtIndex:indexPath.row];
+    }
+}
 
 #pragma mark - Create SubViews
+
 - (void)showWithTitle:(NSString*)title contentView:(UIView *)cView cancelBtnTitle:(NSString *)cTitle sureBtnTitle:(NSString *)sTitle{
     
     self.view = [[UIView alloc] init];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.contentView = cView;
     
     self.titleLabel = [[UILabel alloc] init];
@@ -164,16 +221,14 @@
     [self setTheFrame];
 }
 - (void)setTheFrame{
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    if (!window)
-        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
     
-    UIView *topView = [[window subviews] objectAtIndex:0];
-    
+    UIView *topView = [self getTopOfTheWindow];
+    //设置self 的fram
     self.layer.backgroundColor = [[UIColor lightGrayColor] CGColor];
     self.layer.opacity = 0.1;
     self.frame = topView.bounds;
 
+    //计算titlLabel frame
     CGSize size = topView.bounds.size;
     CGSize titleLabelSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
     if (titleLabelSize.height < HNYActionSheetButtonHeight)

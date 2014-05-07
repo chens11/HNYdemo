@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #define HNYActionSheetButtonHeight 44
+#define HNYActionSheetStringAryCellHeight 44
 @class HNYActionSheet;
 
 @protocol HNYActionSheetDelegate <NSObject>
@@ -21,24 +22,36 @@
 // If not defined in the delegate, we simulate a click in the cancel button
 - (void)hNYActionSheetCancel:(HNYActionSheet *)actionSheet;
 
+// caled when select the String ary
+- (void)hNYActionSheetCancel:(HNYActionSheet *)actionSheet didSelectStringAryAtIndex:(NSInteger)index;
+
 - (void)willPresentHNYActionSheet:(HNYActionSheet *)actionSheet;  // before animation and showing view
+
 - (void)didPresentHNYActionSheet:(HNYActionSheet *)actionSheet;  // after animation
 
-- (void)hNYActionSheet:(HNYActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex; // before animation and hiding view
-- (void)hNYActionSheet:(HNYActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex;  // after animation
+// before animation and hiding view
+- (void)hNYActionSheet:(HNYActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex;
+
+// after animation
+- (void)hNYActionSheet:(HNYActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex;
 
 @end
 
 @interface HNYActionSheet : UIView
 @property (nonatomic,weak) id <HNYActionSheetDelegate> delegate;
+@property (nonatomic,strong) NSArray *stringAry;
 
+//static class fun to create HNYActionSheet with title contentView cancelButton sureButton and delegate
 + (HNYActionSheet*)showWithTitle:(NSString*)title contentView:(UIView*)cView cancelBtnTitle:(NSString *)cTitle sureBtnTitle:(NSString *)sTitle delegate:(id<HNYActionSheetDelegate>)delegate;
 
-+ (HNYActionSheet*)showWithContentView:(UIView*)cView delegate:(id<HNYActionSheetDelegate>)delegate;
+//static class fun to create HNYActionSheet with title string array cancelButton sureButton and delegate
++ (HNYActionSheet*)showWithTitle:(NSString*)title withStringAry:(NSArray*)strAry cancelBtnTitle:(NSString *)cTitle sureBtnTitle:(NSString *)sTitle delegate:(id<HNYActionSheetDelegate>)delegate;
 
+//instance fun to create HNYActionSheet
 - (void)showWithTitle:(NSString*)title contentView:(UIView *)cView cancelBtnTitle:(NSString *)cTitle sureBtnTitle:(NSString *)sTitle;
 
-- (void)show;
-- (void)hide;
+- (void)show;//instacne fun to show HNYActionSheet
+
+- (void)hide; //instacne fun to hide HNYActionSheet
 
 @end

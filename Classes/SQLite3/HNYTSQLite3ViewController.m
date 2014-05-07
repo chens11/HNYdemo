@@ -11,7 +11,7 @@
 #import "HNYSQLite3UserViewController.h"
 
 
-#define HNYDatabaseName @"database.sqlite3"
+#define HNYDatabaseName @"HNYTSqlit3.sqlite3"
 
 @interface HNYTSQLite3ViewController ()<UITableViewDataSource,UITableViewDelegate,PublicDelegate>
 @property (nonatomic,strong) NSMutableArray *list;

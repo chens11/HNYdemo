@@ -141,7 +141,7 @@
     //每个应用程序只有一个Documents目录
     NSString *documentsDirectory = [paths objectAtIndex:0];
     //创建文件名
-    return [documentsDirectory stringByAppendingPathComponent:@"user"];
+    return [documentsDirectory stringByAppendingPathComponent:@"HNYTArchiving"];
 }
 
 

@@ -8,7 +8,7 @@
 
 #import "HNYTPListViewController.h"
 
-#define KPLIST @"user.plist"
+#define KPLIST @"HNYTPlist.plist"
 
 @interface HNYTPListViewController ()
 
