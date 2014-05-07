@@ -10,6 +10,8 @@
 		0302615619177EF10096636E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0302615519177EF10096636E /* libsqlite3.dylib */; };
 		0302615919177F410096636E /* HNYTSQLite3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0302615819177F410096636E /* HNYTSQLite3ViewController.m */; };
 		03328D4C190101F0006C5461 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03328D4B190101F0006C5461 /* PopoverView.m */; };
+		0348925C1919D0B100A4E605 /* HNYTCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0348925A1919D0B100A4E605 /* HNYTCoreData.xcdatamodeld */; };
+		034892621919DB8200A4E605 /* UserEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 034892611919DB8200A4E605 /* UserEntity.m */; };
 		0373BB54190F338D00FAC72E /* HNTAutorotateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0373BB53190F338D00FAC72E /* HNTAutorotateViewController.m */; };
 		0374411418FB7E0C00736C08 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0374411318FB7E0C00736C08 /* EGORefreshTableHeaderView.m */; };
 		0374411718FB848500736C08 /* EGORefreshTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0374411618FB848500736C08 /* EGORefreshTableFooterView.m */; };
@@ -31,7 +33,6 @@
 		CA0FB93B18F9800F00BC251D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA0FB93918F9800F00BC251D /* InfoPlist.strings */; };
 		CA0FB93D18F9800F00BC251D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0FB93C18F9800F00BC251D /* main.m */; };
 		CA0FB94118F9800F00BC251D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0FB94018F9800F00BC251D /* AppDelegate.m */; };
-		CA0FB94418F9801000BC251D /* Demo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA0FB94218F9801000BC251D /* Demo.xcdatamodeld */; };
 		CA0FB94618F9801000BC251D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA0FB94518F9801000BC251D /* Images.xcassets */; };
 		CA0FB94D18F9801000BC251D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0FB94C18F9801000BC251D /* XCTest.framework */; };
 		CA0FB94E18F9801000BC251D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0FB92E18F9800F00BC251D /* Foundation.framework */; };
@@ -72,6 +73,9 @@
 		03328D471900DE18006C5461 /* HNYPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYPopoverView.m; sourceTree = "<group>"; };
 		03328D4A190101F0006C5461 /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
 		03328D4B190101F0006C5461 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
+		0348925B1919D0B100A4E605 /* HNYTCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HNYTCoreData.xcdatamodel; sourceTree = "<group>"; };
+		034892601919DB8200A4E605 /* UserEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEntity.h; sourceTree = "<group>"; };
+		034892611919DB8200A4E605 /* UserEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEntity.m; sourceTree = "<group>"; };
 		0373BB52190F338D00FAC72E /* HNTAutorotateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNTAutorotateViewController.h; sourceTree = "<group>"; };
 		0373BB53190F338D00FAC72E /* HNTAutorotateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNTAutorotateViewController.m; sourceTree = "<group>"; };
 		0374411218FB7E0C00736C08 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
@@ -108,7 +112,6 @@
 		CA0FB93E18F9800F00BC251D /* Demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Demo-Prefix.pch"; sourceTree = "<group>"; };
 		CA0FB93F18F9800F00BC251D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CA0FB94018F9800F00BC251D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CA0FB94318F9801000BC251D /* Demo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Demo.xcdatamodel; sourceTree = "<group>"; };
 		CA0FB94518F9801000BC251D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CA0FB94B18F9801000BC251D /* DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0FB94C18F9801000BC251D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -234,6 +237,9 @@
 			children = (
 				03836F4C1918D5B900B771F8 /* HNYTCoreDataViewController.h */,
 				03836F4D1918D5B900B771F8 /* HNYTCoreDataViewController.m */,
+				0348925A1919D0B100A4E605 /* HNYTCoreData.xcdatamodeld */,
+				034892601919DB8200A4E605 /* UserEntity.h */,
+				034892611919DB8200A4E605 /* UserEntity.m */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -296,7 +302,6 @@
 				CA0FB93F18F9800F00BC251D /* AppDelegate.h */,
 				CA0FB94018F9800F00BC251D /* AppDelegate.m */,
 				CA0FB94518F9801000BC251D /* Images.xcassets */,
-				CA0FB94218F9801000BC251D /* Demo.xcdatamodeld */,
 				CA0FB93718F9800F00BC251D /* Supporting Files */,
 				CA0FB96318F9877C00BC251D /* MainViewController.h */,
 				CA0FB96418F9877C00BC251D /* MainViewController.m */,
@@ -537,8 +542,9 @@
 				CAE7A1D118FAEB4200213ACF /* HNYRefreshTableViewController.m in Sources */,
 				CAA6B6D7190C0DFB00D4192B /* HNYNavigationBar.m in Sources */,
 				CAA6B6CB190C0D9400D4192B /* HNYTableView.m in Sources */,
-				CA0FB94418F9801000BC251D /* Demo.xcdatamodeld in Sources */,
+				0348925C1919D0B100A4E605 /* HNYTCoreData.xcdatamodeld in Sources */,
 				03836F451918BA0200B771F8 /* HNYTArchivingViewController.m in Sources */,
+				034892621919DB8200A4E605 /* UserEntity.m in Sources */,
 				CAA6B6C9190C0D9400D4192B /* HNYActionSheet.m in Sources */,
 				03863E4B19108BF80098AC3E /* HNYTActionSheetViewController.m in Sources */,
 				0374411718FB848500736C08 /* EGORefreshTableFooterView.m in Sources */,
@@ -773,13 +779,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CA0FB94218F9801000BC251D /* Demo.xcdatamodeld */ = {
+		0348925A1919D0B100A4E605 /* HNYTCoreData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				CA0FB94318F9801000BC251D /* Demo.xcdatamodel */,
+				0348925B1919D0B100A4E605 /* HNYTCoreData.xcdatamodel */,
 			);
-			currentVersion = CA0FB94318F9801000BC251D /* Demo.xcdatamodel */;
-			path = Demo.xcdatamodeld;
+			currentVersion = 0348925B1919D0B100A4E605 /* HNYTCoreData.xcdatamodel */;
+			path = HNYTCoreData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

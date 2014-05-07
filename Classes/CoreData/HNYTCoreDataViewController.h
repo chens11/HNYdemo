@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface HNYTCoreDataViewController : UIViewController
+@property (strong,nonatomic) AppDelegate *myDelegate;
+@property (strong,nonatomic) NSMutableArray *entries;
 
 @end
