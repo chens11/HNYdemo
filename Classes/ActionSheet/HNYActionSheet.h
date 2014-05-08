@@ -23,7 +23,7 @@
 - (void)hNYActionSheetCancel:(HNYActionSheet *)actionSheet;
 
 // caled when select the String ary
-- (void)hNYActionSheetCancel:(HNYActionSheet *)actionSheet didSelectStringAryAtIndex:(NSInteger)index;
+- (void)hNYActionSheet:(HNYActionSheet *)actionSheet didSelectStringAryAtIndex:(NSInteger)index;
 
 - (void)willPresentHNYActionSheet:(HNYActionSheet *)actionSheet;  // before animation and showing view
 

@@ -145,8 +145,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self.delegate respondsToSelector:@selector(hNYActionSheetCancel:didSelectStringAryAtIndex:)]) {
-        [self.delegate hNYActionSheetCancel:self didSelectStringAryAtIndex:indexPath.row];
+    if ([self.delegate respondsToSelector:@selector(hNYActionSheet:didSelectStringAryAtIndex:)]) {
+        [self.delegate hNYActionSheet:self didSelectStringAryAtIndex:indexPath.row];
     }
 }
 

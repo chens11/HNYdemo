@@ -7,11 +7,13 @@
 //
 
 #import "HNYPopoverView.h"
-@interface HNYPopoverView ()
-@property (nonatomic,strong) UIView *view;
+@interface HNYPopoverView ()<UITableViewDataSource,UITableViewDelegate>
+@property (nonatomic,strong) UIView *backGroundView;
+@property (nonatomic,strong) UILabel *titleLabel;
 @property (nonatomic) CGPoint arrowPoint;
 @property (nonatomic) BOOL above;
 @property (nonatomic) CGRect contentRect;
+@property (nonatomic,strong) NSArray *stringAry;
 
 @end
 
@@ -23,7 +25,10 @@
     if (self) {
         self.above = NO;
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognize:)];
-        [self addGestureRecognizer:tapGesture];
+        self.backGroundView = [[UIView alloc] init];
+        self.backGroundView.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.backGroundView];
+        [self.backGroundView addGestureRecognizer:tapGesture];
     }
     return self;
 }
@@ -73,17 +78,26 @@
     // 设置描边宽度（为了让描边看上去更清楚）
     //设置颜色（颜色设置也可以放在最上面，只要在绘制前都可以）
     [[UIColor clearColor] setStroke];
-    [[UIColor colorWithWhite:0.8 alpha:0.8] setFill];
+    [[UIColor colorWithWhite:0.8 alpha:1.0] setFill];
     // 描边和填充
     [path stroke];
     [path fill];
+    
+    if (self.titleLabel) {
+        UIBezierPath *bottomTitleLine = [UIBezierPath bezierPath];
+        [bottomTitleLine moveToPoint:CGPointMake(minx, miny + self.titleLabel.frame.size.height)];
+        [bottomTitleLine addLineToPoint:CGPointMake(maxx, miny + self.titleLabel.frame.size.height)];
+        [bottomTitleLine setLineWidth:0.2];
+        [[UIColor blackColor] setStroke];
+        [bottomTitleLine stroke];
+    }
 }
 #pragma mark - Class Static presenting Method
 
 + (HNYPopoverView *)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withText:(NSString *)text delegate:(id<HNYPopoverViewDelegate>)delegate{
     HNYPopoverView *sheet = [[HNYPopoverView alloc] initWithFrame:CGRectZero];
     sheet.delegate = delegate;
-    [sheet presentFromRect:rect inView:view withTitle:nil withText:text];
+    [sheet presentPopoverFromRect:rect inView:view withTitle:nil withText:text];
     [sheet presentPopoverAnimated:YES];
     return sheet;
 }
@@ -91,7 +105,15 @@
 + (HNYPopoverView *)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withTitle:(NSString *)title withText:(NSString *)text delegate:(id<HNYPopoverViewDelegate>)delegate{
     HNYPopoverView *sheet = [[HNYPopoverView alloc] initWithFrame:CGRectZero];
     sheet.delegate = delegate;
-    [sheet presentFromRect:rect inView:view withTitle:title withText:text];
+    [sheet presentPopoverFromRect:rect inView:view withTitle:title withText:text];
+    [sheet presentPopoverAnimated:YES];
+    return sheet;
+}
+
++ (HNYPopoverView *)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withContentView:(UIView *)cView delegate:(id<HNYPopoverViewDelegate>)delegate{
+    HNYPopoverView *sheet = [[HNYPopoverView alloc] initWithFrame:CGRectZero];
+    sheet.delegate = delegate;
+    [sheet presentPopoverFromRect:rect inView:view withTitle:nil withContentView:cView];
     [sheet presentPopoverAnimated:YES];
     return sheet;
 }
@@ -99,33 +121,77 @@
 + (HNYPopoverView *)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withTitle:(NSString *)title withContentView:(UIView *)cView delegate:(id<HNYPopoverViewDelegate>)delegate{
     HNYPopoverView *sheet = [[HNYPopoverView alloc] initWithFrame:CGRectZero];
     sheet.delegate = delegate;
-    [sheet presentFromRect:rect inView:view withTitle:title withContentView:cView];
+    [sheet presentPopoverFromRect:rect inView:view withTitle:title withContentView:cView];
+    [sheet presentPopoverAnimated:YES];
+    return sheet;
+}
+
++ (HNYPopoverView *)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view  withStringAry:(NSArray*)strAry delegate:(id<HNYPopoverViewDelegate>)delegate{
+    HNYPopoverView *sheet = [[HNYPopoverView alloc] initWithFrame:CGRectZero];
+    sheet.delegate = delegate;
+    [sheet presentPopoverFromRect:rect inView:view withTitle:nil withStringAry:strAry];
+    [sheet presentPopoverAnimated:YES];
+    return sheet;
+}
+
++ (HNYPopoverView *)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withTitle:(NSString *)title withStringAry:(NSArray*)strAry delegate:(id<HNYPopoverViewDelegate>)delegate{
+    HNYPopoverView *sheet = [[HNYPopoverView alloc] initWithFrame:CGRectZero];
+    sheet.delegate = delegate;
+    [sheet presentPopoverFromRect:rect inView:view withTitle:title withStringAry:strAry];
     [sheet presentPopoverAnimated:YES];
     return sheet;
 }
 
 #pragma mark - Instance presenting Methods
 
-- (void)presentFromRect:(CGRect)rect inView:(UIView *)view withTitle:(NSString *)title withText:(NSString *)text {
+- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withStringAry:(NSArray *)strAry{
+    [self presentPopoverFromRect:rect inView:view withTitle:nil withStringAry:strAry];
+}
+
+- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withTitle:(NSString *)title withStringAry:(NSArray *)strAry{
+
+    self.stringAry = strAry;
+    UIView *topView = [self getTopViewOfTheWindow];
+    
+    float height  = 200;
+    if (height > strAry.count * HNYPopoverViewStringAryCellHeight)
+        height = strAry.count * HNYPopoverViewStringAryCellHeight;
+    
+    UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, topView.frame.size.width - 60, height) style:UITableViewStylePlain];
+    table.backgroundColor = [UIColor clearColor];
+    table.dataSource = self;
+    table.delegate = self;
+    table.tag = 10000000;
+
+    [self presentPopoverFromRect:rect inView:view withTitle:title withContentView:table];
+}
+
+- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withText:(NSString *)text{
+    [self presentPopoverFromRect:rect inView:view withTitle:nil withText:text];
+}
+
+- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withTitle:(NSString *)title withText:(NSString *)text {
     UIView *topView = [self getTopViewOfTheWindow];
     float font = HNYPopoverViewTextFont;
-    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:font] constrainedToSize:CGSizeMake(topView.frame.size.width - 40, topView.frame.size.height *4/5) lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:font + 2] constrainedToSize:CGSizeMake(topView.frame.size.width - 40, topView.frame.size.height *4/5) lineBreakMode:NSLineBreakByWordWrapping];
+    if (size.height < 44)
+        size.height = 44;
+    
     
     UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     textView.text = text;
+    float offset = (textView.frame.size.height - textView.contentSize.height)/2;
+    textView.contentInset = UIEdgeInsetsMake(offset, 0, offset, 0);
+    textView.textAlignment = NSTextAlignmentCenter;
     textView.backgroundColor = [UIColor clearColor];
     textView.font = [UIFont systemFontOfSize:font];
     textView.editable = NO;
     if (!text)
         textView = nil;
-    [self presentFromRect:rect inView:view withTitle:title withContentView:textView];
+    [self presentPopoverFromRect:rect inView:view withTitle:title withContentView:textView];
 }
 
-- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withTitle:(NSString *)title withContentView:(UIView *)cView delegate:(id<HNYPopoverViewDelegate>)delegate{
-    
-}
-
-- (void)presentFromRect:(CGRect)rect inView:(UIView *)view withTitle:(NSString *)title withContentView:(UIView *)cView {
+- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withTitle:(NSString *)title withContentView:(UIView *)cView {
     
     UIView *topView = [self getTopViewOfTheWindow];
     float font = HNYPopoverViewTextFont;
@@ -144,6 +210,8 @@
         if (size.height < 44)
             size.height = 44;
     }
+    if (size.width < cView.frame.size.width)
+        size.width = cView.frame.size.width;
 
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     titleLabel.text = title;
@@ -158,20 +226,23 @@
     cView.frame = CGRectMake(0, titleLabel.frame.size.height, cView.frame.size.width, cView.frame.size.height);
     UIView *containtView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size.width, titleLabel.frame.size.height + cView.frame.size.height)];
     
-    if (titleLabel)
+    if (titleLabel){
+        self.titleLabel = titleLabel;
         [containtView addSubview:titleLabel];
+    }
     if (cView)
         [containtView addSubview:cView];
-    [self presentFromRect:rect inView:view withContentView:containtView];
+    [self presentPopoverFromRect:rect inView:view withContentView:containtView];
 
 }
 
-- (void)presentFromRect:(CGRect)rect inView:(UIView *)view withContentView:(UIView *)cView {
+- (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view withContentView:(UIView *)cView {
 
     UIView *topView = [self getTopViewOfTheWindow];
     CGRect topViewFram = topView.frame;
     CGRect rectInTopView = [topView convertRect:rect fromView:view];
     
+    self.backGroundView.frame = topView.bounds;
     //Get the arrowPoint
     CGPoint arrowPoint = CGPointZero;
     arrowPoint.x = CGRectGetMidX(rectInTopView);
@@ -182,7 +253,7 @@
     }
     self.arrowPoint = arrowPoint;
     
-    CGRect contentRect = CGRectMake(20, 0, cView.frame.size.width, cView.frame.size.height);
+    CGRect contentRect = CGRectMake((topView.frame.size.width - cView.frame.size.width)/2, 0, cView.frame.size.width, cView.frame.size.height);
     contentRect.origin.y = arrowPoint.y + HNYArrowHeight;
     if (self.above)
         contentRect.origin.y = arrowPoint.y - contentRect.size.height - HNYArrowHeight;
@@ -216,12 +287,42 @@
     }];
 }
 
+#pragma mark - UITableViewDataSource,UITableViewDelegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.stringAry.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return HNYPopoverViewStringAryCellHeight;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellIdentify = @"ActionSheetCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+    }
+    cell.textLabel.text = [self.stringAry objectAtIndex:indexPath.row];
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.backgroundColor = [UIColor clearColor];
+    cell.contentView.backgroundColor = [UIColor clearColor];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([self.delegate respondsToSelector:@selector(hNYPopoverView:didSelectStringAryAtIndex:)]) {
+        [self.delegate hNYPopoverView:self didSelectStringAryAtIndex:indexPath.row];
+    }
+}
+
 #pragma mark - UITapGestureRecognizer
 - (void)tapGestureRecognize:(UITapGestureRecognizer*)gesture{
-    CGPoint point = [gesture locationInView:self];
-    if (!CGRectContainsPoint(self.view.frame, point)) {
-        [self dismissPopoverAnimated:YES];
-    }
+    [self dismissPopoverAnimated:YES];
 }
 
 #pragma mark - dismiss popover

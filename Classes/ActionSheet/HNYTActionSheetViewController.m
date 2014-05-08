@@ -86,14 +86,32 @@ UIActionSheetDelegate>
         label.backgroundColor = [UIColor blackColor];
         if (self.popover) {
         }
+//        self.popover = [HNYPopoverView presentPopoverFromRect:sender.frame inView:self.view  withText:@"implemented -[<UIApplicationDelegate> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add to the list of your supported UIBackgroundModes in your Info.plis" delegate:self];
         self.popover = [HNYPopoverView presentPopoverFromRect:sender.frame inView:self.view withTitle:@"test" withText:@"implemented -[<UIApplicationDelegate> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add to the list of your supported UIBackgroundModes in your Info.plis" delegate:self];
     }
     else if (sender.tag == 4) {
         UILabel *label = [[UILabel alloc] init];
-        label.frame = CGRectMake(0, 0, 100, 200);
-        label.backgroundColor = [UIColor blackColor];
-        [HNYPopoverView presentPopoverFromRect:sender.frame inView:self.view withTitle:@"test" withText:@"implemented -[<UIApplicationDelegate> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add to the list of your supported UIBackgroundModes in your Info.plis" delegate:self];
+        label.frame = CGRectMake(0, 0, 280, 200);
+        label.numberOfLines =5;
+        label.text = @"add custom view here";
+        label.backgroundColor = [UIColor clearColor];
+//        [HNYPopoverView presentPopoverFromRect:sender.frame inView:self.view withContentView:label delegate:self];
+        [HNYPopoverView presentPopoverFromRect:sender.frame inView:self.view withTitle:@"but you still need to add to the list of your supported UIBackgroundModes in your Info.plis" withContentView:label delegate:self];
     }
+    
+    else if (sender.tag == 5) {
+        NSMutableArray *array = [NSMutableArray array];
+        for (int i = 0; i< 5; i++) {
+            NSString *string = [NSString stringWithFormat:@"%@ + %d",[NSDate date],i];
+            [array addObject:string];
+        }
+        [HNYPopoverView presentPopoverFromRect:sender.frame inView:self.view withTitle:nil withStringAry:array delegate:self];
+//        [HNYPopoverView presentPopoverFromRect:sender.frame inView:self.view withTitle:@"test" withStringAry:array delegate:self];
+    }
+
+    else if (sender.tag == 6) {
+    }
+
 
 }
 

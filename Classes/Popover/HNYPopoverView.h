@@ -6,11 +6,12 @@
 //  Copyright (c) 2014 chenzq. All rights reserved.
 //
 
-#define HNYArrowHeight 10.0;
+#define HNYArrowHeight 14.0;
 #define HNYArrowOffset 2.0f;
 #define HNYPopoverViewCornerRadius 4.0f;
 #define HNYPopoverViewTextFont 14.0f;
 #define HNYPopoverViewTitleFont 15.0f;
+#define HNYPopoverViewStringAryCellHeight 44
 
 #import <UIKit/UIKit.h>
 @class HNYPopoverView;
@@ -25,6 +26,9 @@
 /* Called on the delegate when the user has taken action to dismiss the popover. This is not called when -dismissPopoverAnimated: is called directly.
  */
 - (void)hNYPopoverViewDidDismissPopover:(HNYPopoverView *)popover;
+
+// caled when select the String ary
+- (void)hNYPopoverView:(HNYPopoverView *)popover didSelectStringAryAtIndex:(NSInteger)index;
 
 @end
 
