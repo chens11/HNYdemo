@@ -19,6 +19,12 @@
 		0374411E18FBA20500736C08 /* pullArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0374411A18FBA20500736C08 /* pullArrow@2x.png */; };
 		0374411F18FBA20500736C08 /* pullArrowDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 0374411B18FBA20500736C08 /* pullArrowDark.png */; };
 		0374412018FBA20500736C08 /* pullArrowDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0374411C18FBA20500736C08 /* pullArrowDark@2x.png */; };
+		038070D3191B6177002C5054 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 038070C8191B6177002C5054 /* NSObject+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		038070D4191B6177002C5054 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 038070CA191B6177002C5054 /* NSString+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		038070D5191B6177002C5054 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 038070CC191B6177002C5054 /* SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		038070D6191B6177002C5054 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 038070CE191B6177002C5054 /* SBJsonBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		038070D7191B6177002C5054 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 038070D0191B6177002C5054 /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		038070D8191B6177002C5054 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 038070D2191B6177002C5054 /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		03836F3B1918739C00B771F8 /* HNYSQLite3UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03836F3A1918739C00B771F8 /* HNYSQLite3UserViewController.m */; };
 		03836F451918BA0200B771F8 /* HNYTArchivingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03836F441918BA0200B771F8 /* HNYTArchivingViewController.m */; };
 		03836F481918C83300B771F8 /* HNYUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03836F471918C83300B771F8 /* HNYUser.m */; };
@@ -86,6 +92,19 @@
 		0374411A18FBA20500736C08 /* pullArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pullArrow@2x.png"; sourceTree = "<group>"; };
 		0374411B18FBA20500736C08 /* pullArrowDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pullArrowDark.png; sourceTree = "<group>"; };
 		0374411C18FBA20500736C08 /* pullArrowDark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pullArrowDark@2x.png"; sourceTree = "<group>"; };
+		038070C6191B6177002C5054 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		038070C7191B6177002C5054 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		038070C8191B6177002C5054 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		038070C9191B6177002C5054 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		038070CA191B6177002C5054 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		038070CB191B6177002C5054 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		038070CC191B6177002C5054 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		038070CD191B6177002C5054 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		038070CE191B6177002C5054 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		038070CF191B6177002C5054 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		038070D0191B6177002C5054 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		038070D1191B6177002C5054 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		038070D2191B6177002C5054 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		03836F391918739C00B771F8 /* HNYSQLite3UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYSQLite3UserViewController.h; sourceTree = "<group>"; };
 		03836F3A1918739C00B771F8 /* HNYSQLite3UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYSQLite3UserViewController.m; sourceTree = "<group>"; };
 		03836F3F191874C200B771F8 /* PublicDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublicDelegate.h; sourceTree = "<group>"; };
@@ -199,6 +218,13 @@
 			path = PopoverView;
 			sourceTree = "<group>";
 		};
+		035CA643191B2C8000B4E9AF /* XmlReader */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = XmlReader;
+			sourceTree = "<group>";
+		};
 		0373BB51190F333500FAC72E /* StatusBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +245,26 @@
 				0374411C18FBA20500736C08 /* pullArrowDark@2x.png */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		038070C5191B6177002C5054 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				038070C6191B6177002C5054 /* JSON.h */,
+				038070C7191B6177002C5054 /* NSObject+SBJSON.h */,
+				038070C8191B6177002C5054 /* NSObject+SBJSON.m */,
+				038070C9191B6177002C5054 /* NSString+SBJSON.h */,
+				038070CA191B6177002C5054 /* NSString+SBJSON.m */,
+				038070CB191B6177002C5054 /* SBJSON.h */,
+				038070CC191B6177002C5054 /* SBJSON.m */,
+				038070CD191B6177002C5054 /* SBJsonBase.h */,
+				038070CE191B6177002C5054 /* SBJsonBase.m */,
+				038070CF191B6177002C5054 /* SBJsonParser.h */,
+				038070D0191B6177002C5054 /* SBJsonParser.m */,
+				038070D1191B6177002C5054 /* SBJsonWriter.h */,
+				038070D2191B6177002C5054 /* SBJsonWriter.m */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 		03836F401918B9BB00B771F8 /* Archiving */ = {
@@ -401,6 +447,8 @@
 		CAE7A1CC18FAEAB800213ACF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				038070C5191B6177002C5054 /* JSON */,
+				035CA643191B2C8000B4E9AF /* XmlReader */,
 				03836F4F1918DCDC00B771F8 /* File */,
 				03836F401918B9BB00B771F8 /* Archiving */,
 				03836F411918B9BB00B771F8 /* CoreData */,
@@ -538,8 +586,10 @@
 			files = (
 				03836F481918C83300B771F8 /* HNYUser.m in Sources */,
 				CA90E4DF19153F7900237A99 /* HNYPopoverView.m in Sources */,
+				038070D6191B6177002C5054 /* SBJsonBase.m in Sources */,
 				03836F4B1918D1CA00B771F8 /* HNYTPListViewController.m in Sources */,
 				CAE7A1D118FAEB4200213ACF /* HNYRefreshTableViewController.m in Sources */,
+				038070D7191B6177002C5054 /* SBJsonParser.m in Sources */,
 				CAA6B6D7190C0DFB00D4192B /* HNYNavigationBar.m in Sources */,
 				CAA6B6CB190C0D9400D4192B /* HNYTableView.m in Sources */,
 				0348925C1919D0B100A4E605 /* HNYTCoreData.xcdatamodeld in Sources */,
@@ -547,6 +597,7 @@
 				034892621919DB8200A4E605 /* UserEntity.m in Sources */,
 				CAA6B6C9190C0D9400D4192B /* HNYActionSheet.m in Sources */,
 				03863E4B19108BF80098AC3E /* HNYTActionSheetViewController.m in Sources */,
+				038070D8191B6177002C5054 /* SBJsonWriter.m in Sources */,
 				0374411718FB848500736C08 /* EGORefreshTableFooterView.m in Sources */,
 				03836F521918DCF200B771F8 /* HNYTFileViewController.m in Sources */,
 				CAA6B6CC190C0D9400D4192B /* HNYTableViewCell.m in Sources */,
@@ -554,10 +605,13 @@
 				CA0FB93D18F9800F00BC251D /* main.m in Sources */,
 				03836F4E1918D5B900B771F8 /* HNYTCoreDataViewController.m in Sources */,
 				CAA6B6BD190BFC2500D4192B /* HNYTRefreshTableViewController.m in Sources */,
+				038070D3191B6177002C5054 /* NSObject+SBJSON.m in Sources */,
 				0374411418FB7E0C00736C08 /* EGORefreshTableHeaderView.m in Sources */,
 				03328D4C190101F0006C5461 /* PopoverView.m in Sources */,
 				CAA6B6D6190C0DFA00D4192B /* HNYBaseViewController.m in Sources */,
 				03836F3B1918739C00B771F8 /* HNYSQLite3UserViewController.m in Sources */,
+				038070D4191B6177002C5054 /* NSString+SBJSON.m in Sources */,
+				038070D5191B6177002C5054 /* SBJSON.m in Sources */,
 				CAA6B6D8190C0DFB00D4192B /* HNYTabBar.m in Sources */,
 				CA0FB96518F9877C00BC251D /* MainViewController.m in Sources */,
 				0302615919177F410096636E /* HNYTSQLite3ViewController.m in Sources */,
@@ -683,6 +737,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "Demo/Demo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -698,6 +756,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
 				INFOPLIST_FILE = "Demo/Demo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
