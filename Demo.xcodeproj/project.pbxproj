@@ -42,6 +42,9 @@
 		0380710D191B6B72002C5054 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 03807103191B6B72002C5054 /* UIProgressView+AFNetworking.m */; };
 		0380710E191B6B72002C5054 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 03807105191B6B72002C5054 /* UIRefreshControl+AFNetworking.m */; };
 		0380710F191B6B72002C5054 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 03807107191B6B72002C5054 /* UIWebView+AFNetworking.m */; };
+		03807111191B6E0D002C5054 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03807110191B6E0D002C5054 /* libxml2.dylib */; };
+		03807114191B7137002C5054 /* HNYRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 03807113191B7137002C5054 /* HNYRequest.m */; };
+		03807117191B738E002C5054 /* HNYTAFNetworkingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03807116191B738E002C5054 /* HNYTAFNetworkingViewController.m */; };
 		03836F3B1918739C00B771F8 /* HNYSQLite3UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03836F3A1918739C00B771F8 /* HNYSQLite3UserViewController.m */; };
 		03836F451918BA0200B771F8 /* HNYTArchivingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03836F441918BA0200B771F8 /* HNYTArchivingViewController.m */; };
 		03836F481918C83300B771F8 /* HNYUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 03836F471918C83300B771F8 /* HNYUser.m */; };
@@ -158,6 +161,11 @@
 		03807105191B6B72002C5054 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		03807106191B6B72002C5054 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		03807107191B6B72002C5054 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		03807110191B6E0D002C5054 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		03807112191B7137002C5054 /* HNYRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYRequest.h; sourceTree = "<group>"; };
+		03807113191B7137002C5054 /* HNYRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYRequest.m; sourceTree = "<group>"; };
+		03807115191B738E002C5054 /* HNYTAFNetworkingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYTAFNetworkingViewController.h; sourceTree = "<group>"; };
+		03807116191B738E002C5054 /* HNYTAFNetworkingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYTAFNetworkingViewController.m; sourceTree = "<group>"; };
 		03836F391918739C00B771F8 /* HNYSQLite3UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYSQLite3UserViewController.h; sourceTree = "<group>"; };
 		03836F3A1918739C00B771F8 /* HNYSQLite3UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYSQLite3UserViewController.m; sourceTree = "<group>"; };
 		03836F3F191874C200B771F8 /* PublicDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublicDelegate.h; sourceTree = "<group>"; };
@@ -220,6 +228,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03807111191B6E0D002C5054 /* libxml2.dylib in Frameworks */,
 				0302615619177EF10096636E /* libsqlite3.dylib in Frameworks */,
 				CA0FB93118F9800F00BC251D /* CoreGraphics.framework in Frameworks */,
 				CA0FB93518F9800F00BC251D /* CoreData.framework in Frameworks */,
@@ -342,6 +351,10 @@
 				038070EA191B6B44002C5054 /* AFURLResponseSerialization.m */,
 				038070EB191B6B44002C5054 /* AFURLSessionManager.h */,
 				038070EC191B6B44002C5054 /* AFURLSessionManager.m */,
+				03807112191B7137002C5054 /* HNYRequest.h */,
+				03807113191B7137002C5054 /* HNYRequest.m */,
+				03807115191B738E002C5054 /* HNYTAFNetworkingViewController.h */,
+				03807116191B738E002C5054 /* HNYTAFNetworkingViewController.m */,
 			);
 			path = AFNetworking;
 			sourceTree = "<group>";
@@ -435,6 +448,7 @@
 		CA0FB92D18F9800F00BC251D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03807110191B6E0D002C5054 /* libxml2.dylib */,
 				0302615519177EF10096636E /* libsqlite3.dylib */,
 				CA0FB92E18F9800F00BC251D /* Foundation.framework */,
 				CA0FB93018F9800F00BC251D /* CoreGraphics.framework */,
@@ -697,6 +711,8 @@
 				038070EF191B6B44002C5054 /* AFHTTPSessionManager.m in Sources */,
 				03836F4B1918D1CA00B771F8 /* HNYTPListViewController.m in Sources */,
 				CAE7A1D118FAEB4200213ACF /* HNYRefreshTableViewController.m in Sources */,
+				03807117191B738E002C5054 /* HNYTAFNetworkingViewController.m in Sources */,
+				03807114191B7137002C5054 /* HNYRequest.m in Sources */,
 				038070D7191B6177002C5054 /* SBJsonParser.m in Sources */,
 				0380710C191B6B72002C5054 /* UIImageView+AFNetworking.m in Sources */,
 				038070F3191B6B44002C5054 /* AFURLRequestSerialization.m in Sources */,

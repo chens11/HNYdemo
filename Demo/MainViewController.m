@@ -14,6 +14,7 @@
 #import "HNYTArchivingViewController.h"
 #import "HNYTPListViewController.h"
 #import "HNYTCoreDataViewController.h"
+#import "HNYTAFNetworkingViewController.h"
 
 @interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) NSMutableArray *dataList;
@@ -130,7 +131,9 @@
         HNYTCoreDataViewController *controller = [[HNYTCoreDataViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
     }
-    else if ([@"Test tab bar" isEqualToString:controllerType]){
+    else if ([@"AFNetworking test" isEqualToString:controllerType]){
+        HNYTAFNetworkingViewController *controller = [[HNYTAFNetworkingViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
     }
     else if ([@"Test tab bar" isEqualToString:controllerType]){
     }
@@ -164,6 +167,10 @@
     
     NSDictionary *coreData = [NSDictionary dictionaryWithObjectsAndKeys:@"Test core data ",@"title",@"core data",@"type", nil];
     [self.dataList addObject:coreData];
+    
+    NSDictionary *afnetworking = [NSDictionary dictionaryWithObjectsAndKeys:@"Test AFNetworking ",@"title",@"AFNetworking test",@"type", nil];
+    [self.dataList addObject:afnetworking];
+
     
 
 }
