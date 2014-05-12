@@ -82,6 +82,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		033075DF19206EF30004BF23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 033075DA19206EF20004BF23 /* SideBar.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 033075A819206EF10004BF23;
+			remoteInfo = SideBar;
+		};
+		033075E119206EF30004BF23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 033075DA19206EF20004BF23 /* SideBar.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 033075C319206EF20004BF23;
+			remoteInfo = SideBarTests;
+		};
 		CA0FB95118F9801000BC251D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CA0FB92318F9800F00BC251D /* Project object */;
@@ -95,6 +109,7 @@
 		0302615519177EF10096636E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		0302615719177F410096636E /* HNYTSQLite3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYTSQLite3ViewController.h; sourceTree = "<group>"; };
 		0302615819177F410096636E /* HNYTSQLite3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYTSQLite3ViewController.m; sourceTree = "<group>"; };
+		033075DA19206EF20004BF23 /* SideBar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SideBar.xcodeproj; path = SideBar/SideBar.xcodeproj; sourceTree = "<group>"; };
 		03328D461900DE18006C5461 /* HNYPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYPopoverView.h; sourceTree = "<group>"; };
 		03328D471900DE18006C5461 /* HNYPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYPopoverView.m; sourceTree = "<group>"; };
 		03328D4A190101F0006C5461 /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
@@ -260,6 +275,23 @@
 				03836F3A1918739C00B771F8 /* HNYSQLite3UserViewController.m */,
 			);
 			path = SQLite3;
+			sourceTree = "<group>";
+		};
+		0330759E19206E910004BF23 /* SideBar */ = {
+			isa = PBXGroup;
+			children = (
+				033075DA19206EF20004BF23 /* SideBar.xcodeproj */,
+			);
+			path = SideBar;
+			sourceTree = "<group>";
+		};
+		033075DB19206EF20004BF23 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				033075E019206EF30004BF23 /* SideBar.app */,
+				033075E219206EF30004BF23 /* SideBarTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		03328D451900DDEA006C5461 /* Popover */ = {
@@ -564,6 +596,7 @@
 		CAE7A1CC18FAEAB800213ACF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0330759E19206E910004BF23 /* SideBar */,
 				038070F6191B6B72002C5054 /* UIKit+AFNetworking */,
 				038070D9191B6B44002C5054 /* AFNetworking */,
 				038070C5191B6177002C5054 /* JSON */,
@@ -664,6 +697,12 @@
 			mainGroup = CA0FB92218F9800F00BC251D;
 			productRefGroup = CA0FB92C18F9800F00BC251D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 033075DB19206EF20004BF23 /* Products */;
+					ProjectRef = 033075DA19206EF20004BF23 /* SideBar.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				CA0FB92A18F9800F00BC251D /* Demo */,
@@ -671,6 +710,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		033075E019206EF30004BF23 /* SideBar.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = SideBar.app;
+			remoteRef = 033075DF19206EF30004BF23 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		033075E219206EF30004BF23 /* SideBarTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SideBarTests.xctest;
+			remoteRef = 033075E119206EF30004BF23 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CA0FB92918F9800F00BC251D /* Resources */ = {

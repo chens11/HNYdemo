@@ -92,7 +92,7 @@
     UITextField *nameField = (UITextField *)[self.view viewWithTag:1000];
     UITextField *phoneField = (UITextField *)[self.view viewWithTag:1001];
     UITextField *addressField = (UITextField *)[self.view viewWithTag:1002];
-    NSAssert1(nameField.text == nil, @"test nsassert", __FUNCTION__);//NS_BLOCK_ASSERTIONS
+//    NSAssert1(nameField.text == nil, @"test nsassert", __FUNCTION__);//NS_BLOCK_ASSERTIONS
     
     HNYUser *user = [[HNYUser alloc] init];
     user.name = nameField.text;
