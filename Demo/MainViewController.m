@@ -15,6 +15,7 @@
 #import "HNYTPListViewController.h"
 #import "HNYTCoreDataViewController.h"
 #import "HNYTAFNetworkingViewController.h"
+#import "HNYTJSONViewController.h"
 
 @interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) NSMutableArray *dataList;
@@ -135,12 +136,33 @@
         HNYTAFNetworkingViewController *controller = [[HNYTAFNetworkingViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
     }
-    else if ([@"Test tab bar" isEqualToString:controllerType]){
+    else if ([@"Test json" isEqualToString:controllerType]){
+        HNYTJSONViewController *controller = [[HNYTJSONViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else if ([@"Test json" isEqualToString:controllerType]){
+        HNYTJSONViewController *controller = [[HNYTJSONViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else if ([@"Test json" isEqualToString:controllerType]){
+        HNYTAFNetworkingViewController *controller = [[HNYTAFNetworkingViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else if ([@"Test json" isEqualToString:controllerType]){
+        HNYTAFNetworkingViewController *controller = [[HNYTAFNetworkingViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else if ([@"Test json" isEqualToString:controllerType]){
+        HNYTAFNetworkingViewController *controller = [[HNYTAFNetworkingViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
     }
 }
 
 #pragma mark - init data for the table view controller
 - (void)initData{
+    NSDictionary *json = [NSDictionary dictionaryWithObjectsAndKeys:@"Test json ",@"title",@"Test json",@"type", nil];
+    [self.dataList addObject:json];
+    
     NSDictionary *refreshDic = [NSDictionary dictionaryWithObjectsAndKeys:@"Test refresh tabel view controller",@"title",@"refresh Table",@"type", nil];
     [self.dataList addObject:refreshDic];
     
