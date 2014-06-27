@@ -16,6 +16,8 @@
 #import "HNYTCoreDataViewController.h"
 #import "HNYTAFNetworkingViewController.h"
 #import "HNYTJSONViewController.h"
+#import "HNYRSAViewController.h"
+#import "ELCImagePickerController.h"
 
 @interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) NSMutableArray *dataList;
@@ -140,12 +142,12 @@
         HNYTJSONViewController *controller = [[HNYTJSONViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
     }
-    else if ([@"Test json" isEqualToString:controllerType]){
-        HNYTJSONViewController *controller = [[HNYTJSONViewController alloc] init];
+    else if ([@"encrypt and decrypt" isEqualToString:controllerType]){
+        HNYRSAViewController *controller = [[HNYRSAViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
     }
-    else if ([@"Test json" isEqualToString:controllerType]){
-        HNYTAFNetworkingViewController *controller = [[HNYTAFNetworkingViewController alloc] init];
+    else if ([@"image picker" isEqualToString:controllerType]){
+        ELCImagePickerController *controller = [[ELCImagePickerController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
     }
     else if ([@"Test json" isEqualToString:controllerType]){
@@ -162,6 +164,12 @@
 - (void)initData{
     NSDictionary *json = [NSDictionary dictionaryWithObjectsAndKeys:@"Test json ",@"title",@"Test json",@"type", nil];
     [self.dataList addObject:json];
+    
+    NSDictionary *imageDic = [NSDictionary dictionaryWithObjectsAndKeys:@"Test custom image picker",@"title",@"image picker",@"type", nil];
+    [self.dataList addObject:imageDic];
+    
+    NSDictionary *rsaDic = [NSDictionary dictionaryWithObjectsAndKeys:@"Test rsa encrypt and decrypt",@"title",@"encrypt and decrypt",@"type", nil];
+    [self.dataList addObject:rsaDic];
     
     NSDictionary *refreshDic = [NSDictionary dictionaryWithObjectsAndKeys:@"Test refresh tabel view controller",@"title",@"refresh Table",@"type", nil];
     [self.dataList addObject:refreshDic];

@@ -17,7 +17,7 @@
         return;
     if (dictionary == nil || object == nil)
         return;
-
+    
     NSArray *keyAry = [dictionary allKeys];
     if ([keyAry isKindOfClass:[NSArray class]]) {
         for (NSString *string in keyAry) {
@@ -28,12 +28,21 @@
     }
 }
 
+
 + (id)mappingDictionary:(NSDictionary *)dictionary toObjectWithClassName:(NSString *)className{
     id object = [[NSClassFromString(className) alloc] init];
     [HNYJSONUitls mappingDictionary:dictionary toObject:object];
     return object;
 }
 
++ (NSMutableArray *)mappingDicAry:(NSArray *)DicAry toObjectAryWithClassName:(NSString *)className{
+    NSMutableArray *array = [NSMutableArray array];
+    for (id dic in DicAry) {
+        id object = [HNYJSONUitls mappingDictionary:dic toObjectWithClassName:className];
+        [array addObject:object];
+    }
+    return array;
+}
 
 + (NSDictionary *)getDictionaryFromObject:(id)object{
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
@@ -58,7 +67,7 @@
             else if ([value isKindOfClass:[HNTModel class]]) {
                 [dictionary setValue:[HNYJSONUitls getDictionaryFromObject:value] forKey:propertyName];
             }
-
+            
             else if ([value isKindOfClass:[NSArray class]]){
                 NSMutableArray *array = [NSMutableArray array];
                 
@@ -80,5 +89,7 @@
     }
     return dictionary;
 }
+
+
 
 @end

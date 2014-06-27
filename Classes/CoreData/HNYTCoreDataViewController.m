@@ -104,7 +104,7 @@
     UITextField *nameField = (UITextField *)[self.view viewWithTag:1000];
     UITextField *phoneField = (UITextField *)[self.view viewWithTag:1001];
     UITextField *addressField = (UITextField *)[self.view viewWithTag:1002];
-    
+
     //让CoreData在上下文中创建一个新对象(托管对象)
     UserEntity *entity = [NSEntityDescription insertNewObjectForEntityForName:@"UserEntity" inManagedObjectContext:self.myDelegate.managedObjectContext];
     [entity setName:nameField.text];
