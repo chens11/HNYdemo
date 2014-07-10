@@ -14,7 +14,6 @@
 #import "HNYTArchivingViewController.h"
 #import "HNYTPListViewController.h"
 #import "HNYTCoreDataViewController.h"
-#import "HNYTAFNetworkingViewController.h"
 #import "HNYTJSONViewController.h"
 #import "HNYRSAViewController.h"
 #import "ELCImagePickerController.h"
@@ -134,10 +133,6 @@
         HNYTCoreDataViewController *controller = [[HNYTCoreDataViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
     }
-    else if ([@"AFNetworking test" isEqualToString:controllerType]){
-        HNYTAFNetworkingViewController *controller = [[HNYTAFNetworkingViewController alloc] init];
-        [self.navigationController pushViewController:controller animated:YES];
-    }
     else if ([@"Test json" isEqualToString:controllerType]){
         HNYTJSONViewController *controller = [[HNYTJSONViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
@@ -151,12 +146,8 @@
         [self.navigationController pushViewController:controller animated:YES];
     }
     else if ([@"Test json" isEqualToString:controllerType]){
-        HNYTAFNetworkingViewController *controller = [[HNYTAFNetworkingViewController alloc] init];
-        [self.navigationController pushViewController:controller animated:YES];
     }
     else if ([@"Test json" isEqualToString:controllerType]){
-        HNYTAFNetworkingViewController *controller = [[HNYTAFNetworkingViewController alloc] init];
-        [self.navigationController pushViewController:controller animated:YES];
     }
 }
 
@@ -197,10 +188,6 @@
     
     NSDictionary *coreData = [NSDictionary dictionaryWithObjectsAndKeys:@"Test core data ",@"title",@"core data",@"type", nil];
     [self.dataList addObject:coreData];
-    
-    NSDictionary *afnetworking = [NSDictionary dictionaryWithObjectsAndKeys:@"Test AFNetworking ",@"title",@"AFNetworking test",@"type", nil];
-    [self.dataList addObject:afnetworking];
-
     
 
 }
