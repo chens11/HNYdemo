@@ -22,6 +22,7 @@
 {
     CGRect frame = [[UIScreen mainScreen] bounds];
     self.window = [[UIWindow alloc] initWithFrame:frame];
+    self.window.windowLevel = UIWindowLevelStatusBar +100;
     self.window.backgroundColor = [UIColor clearColor];
     MainViewController *controller = [[MainViewController alloc] init];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];

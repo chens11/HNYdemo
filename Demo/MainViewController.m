@@ -17,6 +17,8 @@
 #import "HNYTJSONViewController.h"
 #import "HNYRSAViewController.h"
 #import "ELCImagePickerController.h"
+#import "HNYMulLocationViewController.h"
+#import "HNYGetIPViewController.h"
 
 @interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) NSMutableArray *dataList;
@@ -145,6 +147,25 @@
         ELCImagePickerController *controller = [[ELCImagePickerController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
     }
+    else if ([@"Test backgound location" isEqualToString:controllerType]){
+        HNYMulLocationViewController *controller = [[HNYMulLocationViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
+
+    }
+    else if ([@"Get Ip" isEqualToString:controllerType]){
+        HNYGetIPViewController *controller = [[HNYGetIPViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else if ([@"Test json" isEqualToString:controllerType]){
+    }
+    else if ([@"Test json" isEqualToString:controllerType]){
+    }
+    else if ([@"Test json" isEqualToString:controllerType]){
+    }
+    else if ([@"Test json" isEqualToString:controllerType]){
+    }
+    else if ([@"Test json" isEqualToString:controllerType]){
+    }
     else if ([@"Test json" isEqualToString:controllerType]){
     }
     else if ([@"Test json" isEqualToString:controllerType]){
@@ -153,6 +174,14 @@
 
 #pragma mark - init data for the table view controller
 - (void)initData{
+    
+    
+    NSDictionary *getIP = [NSDictionary dictionaryWithObjectsAndKeys:@"Get Ip ",@"title",@"Get Ip",@"type", nil];
+    [self.dataList addObject:getIP];
+    
+    NSDictionary *bgLocation = [NSDictionary dictionaryWithObjectsAndKeys:@"Test backgound location ",@"title",@"Test backgound location",@"type", nil];
+    [self.dataList addObject:bgLocation];
+    
     NSDictionary *json = [NSDictionary dictionaryWithObjectsAndKeys:@"Test json ",@"title",@"Test json",@"type", nil];
     [self.dataList addObject:json];
     

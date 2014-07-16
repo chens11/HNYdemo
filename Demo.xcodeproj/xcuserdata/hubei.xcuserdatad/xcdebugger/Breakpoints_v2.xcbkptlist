@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Demo/AppDelegate.m"
-            timestampString = "421124789.681959"
+            filePath = "Classes/AFNetworking/HNYTAFNetworkingViewController.m"
+            timestampString = "421311275.164387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "-applicationWillTerminate:"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "-touchButton:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Classes/AFNetworking/HNYTAFNetworkingViewController.m"
-            timestampString = "421311275.164387"
+            filePath = "Classes/MultipleTask/HNYMulLocationViewController.m"
+            timestampString = "427166494.124235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "-touchButton:"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Classes/Socket/HNYGetIPUtils.m"
+            timestampString = "427195288.674877"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "+getLocalWiFiIPAddress"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

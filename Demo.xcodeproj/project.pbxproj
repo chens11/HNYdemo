@@ -10,8 +10,12 @@
 		0302615619177EF10096636E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0302615519177EF10096636E /* libsqlite3.dylib */; };
 		0302615919177F410096636E /* HNYTSQLite3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0302615819177F410096636E /* HNYTSQLite3ViewController.m */; };
 		03328D4C190101F0006C5461 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03328D4B190101F0006C5461 /* PopoverView.m */; };
+		033A29801976338700016157 /* HNYGetIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 033A297F1976338700016157 /* HNYGetIPViewController.m */; };
+		033A29831976791400016157 /* HNYGetIPUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 033A29821976791400016157 /* HNYGetIPUtils.m */; };
 		0348925C1919D0B100A4E605 /* HNYTCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0348925A1919D0B100A4E605 /* HNYTCoreData.xcdatamodeld */; };
 		034892621919DB8200A4E605 /* UserEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 034892611919DB8200A4E605 /* UserEntity.m */; };
+		035D73981974C2A0005E3FCE /* HNYMulLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 035D73971974C2A0005E3FCE /* HNYMulLocationViewController.m */; };
+		035D739B1974D01F005E3FCE /* HNYStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 035D739A1974D01F005E3FCE /* HNYStatusBar.m */; };
 		0373BB54190F338D00FAC72E /* HNTAutorotateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0373BB53190F338D00FAC72E /* HNTAutorotateViewController.m */; };
 		0374411418FB7E0C00736C08 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0374411318FB7E0C00736C08 /* EGORefreshTableHeaderView.m */; };
 		0374411718FB848500736C08 /* EGORefreshTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0374411618FB848500736C08 /* EGORefreshTableFooterView.m */; };
@@ -111,9 +115,17 @@
 		03328D471900DE18006C5461 /* HNYPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYPopoverView.m; sourceTree = "<group>"; };
 		03328D4A190101F0006C5461 /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
 		03328D4B190101F0006C5461 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
+		033A297E1976338700016157 /* HNYGetIPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYGetIPViewController.h; sourceTree = "<group>"; };
+		033A297F1976338700016157 /* HNYGetIPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYGetIPViewController.m; sourceTree = "<group>"; };
+		033A29811976791400016157 /* HNYGetIPUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYGetIPUtils.h; sourceTree = "<group>"; };
+		033A29821976791400016157 /* HNYGetIPUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYGetIPUtils.m; sourceTree = "<group>"; };
 		0348925B1919D0B100A4E605 /* HNYTCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HNYTCoreData.xcdatamodel; sourceTree = "<group>"; };
 		034892601919DB8200A4E605 /* UserEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEntity.h; sourceTree = "<group>"; };
 		034892611919DB8200A4E605 /* UserEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEntity.m; sourceTree = "<group>"; };
+		035D73961974C2A0005E3FCE /* HNYMulLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYMulLocationViewController.h; sourceTree = "<group>"; };
+		035D73971974C2A0005E3FCE /* HNYMulLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYMulLocationViewController.m; sourceTree = "<group>"; };
+		035D73991974D01F005E3FCE /* HNYStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYStatusBar.h; sourceTree = "<group>"; };
+		035D739A1974D01F005E3FCE /* HNYStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYStatusBar.m; sourceTree = "<group>"; };
 		0373BB52190F338D00FAC72E /* HNTAutorotateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNTAutorotateViewController.h; sourceTree = "<group>"; };
 		0373BB53190F338D00FAC72E /* HNTAutorotateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNTAutorotateViewController.m; sourceTree = "<group>"; };
 		0374411218FB7E0C00736C08 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
@@ -298,6 +310,17 @@
 			path = PopoverView;
 			sourceTree = "<group>";
 		};
+		033A297B1976328A00016157 /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				033A297E1976338700016157 /* HNYGetIPViewController.h */,
+				033A297F1976338700016157 /* HNYGetIPViewController.m */,
+				033A29811976791400016157 /* HNYGetIPUtils.h */,
+				033A29821976791400016157 /* HNYGetIPUtils.m */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
 		035CA643191B2C8000B4E9AF /* XmlReader */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,11 +328,22 @@
 			path = XmlReader;
 			sourceTree = "<group>";
 		};
+		035D73931974C263005E3FCE /* MultipleTask */ = {
+			isa = PBXGroup;
+			children = (
+				035D73961974C2A0005E3FCE /* HNYMulLocationViewController.h */,
+				035D73971974C2A0005E3FCE /* HNYMulLocationViewController.m */,
+			);
+			path = MultipleTask;
+			sourceTree = "<group>";
+		};
 		0373BB51190F333500FAC72E /* StatusBar */ = {
 			isa = PBXGroup;
 			children = (
 				0373BB52190F338D00FAC72E /* HNTAutorotateViewController.h */,
 				0373BB53190F338D00FAC72E /* HNTAutorotateViewController.m */,
+				035D73991974D01F005E3FCE /* HNYStatusBar.h */,
+				035D739A1974D01F005E3FCE /* HNYStatusBar.m */,
 			);
 			path = StatusBar;
 			sourceTree = "<group>";
@@ -586,6 +620,8 @@
 		CAE7A1CC18FAEAB800213ACF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				033A297B1976328A00016157 /* Socket */,
+				035D73931974C263005E3FCE /* MultipleTask */,
 				03FC4E2319669E2400E58165 /* Thread */,
 				037D7D75195D70C40086C770 /* ELCImagePicker */,
 				037D7D5E195D6A090086C770 /* RSA_Encrypt_Decrypt */,
@@ -761,6 +797,7 @@
 				03836F481918C83300B771F8 /* HNYUser.m in Sources */,
 				CA90E4DF19153F7900237A99 /* HNYPopoverView.m in Sources */,
 				037D7D63195D6A090086C770 /* RSA.m in Sources */,
+				033A29831976791400016157 /* HNYGetIPUtils.m in Sources */,
 				038070D6191B6177002C5054 /* SBJsonBase.m in Sources */,
 				03836F4B1918D1CA00B771F8 /* HNYTPListViewController.m in Sources */,
 				CAE7A1D118FAEB4200213ACF /* HNYRefreshTableViewController.m in Sources */,
@@ -771,10 +808,12 @@
 				CAA6B6D7190C0DFB00D4192B /* HNYNavigationBar.m in Sources */,
 				CAA6B6CB190C0D9400D4192B /* HNYTableView.m in Sources */,
 				039E359B1921BDA000AC0325 /* HNTTestModel.m in Sources */,
+				035D739B1974D01F005E3FCE /* HNYStatusBar.m in Sources */,
 				0348925C1919D0B100A4E605 /* HNYTCoreData.xcdatamodeld in Sources */,
 				037D7D8A195D70C40086C770 /* ELCAssetCell.m in Sources */,
 				03836F451918BA0200B771F8 /* HNYTArchivingViewController.m in Sources */,
 				034892621919DB8200A4E605 /* UserEntity.m in Sources */,
+				035D73981974C2A0005E3FCE /* HNYMulLocationViewController.m in Sources */,
 				039E35A7192209AE00AC0325 /* HNTModel.m in Sources */,
 				CAA6B6C9190C0D9400D4192B /* HNYActionSheet.m in Sources */,
 				03863E4B19108BF80098AC3E /* HNYTActionSheetViewController.m in Sources */,
@@ -796,6 +835,7 @@
 				03836F3B1918739C00B771F8 /* HNYSQLite3UserViewController.m in Sources */,
 				038070D4191B6177002C5054 /* NSString+SBJSON.m in Sources */,
 				038070D5191B6177002C5054 /* SBJSON.m in Sources */,
+				033A29801976338700016157 /* HNYGetIPViewController.m in Sources */,
 				039E35A01921BE6E00AC0325 /* HNYTJSONViewController.m in Sources */,
 				CAA6B6D8190C0DFB00D4192B /* HNYTabBar.m in Sources */,
 				CA0FB96518F9877C00BC251D /* MainViewController.m in Sources */,
