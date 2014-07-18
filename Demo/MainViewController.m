@@ -19,6 +19,7 @@
 #import "ELCImagePickerController.h"
 #import "HNYMulLocationViewController.h"
 #import "HNYGetIPViewController.h"
+#import "HNYTDetailViewController.h"
 
 @interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) NSMutableArray *dataList;
@@ -156,7 +157,9 @@
         HNYGetIPViewController *controller = [[HNYGetIPViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
     }
-    else if ([@"Test json" isEqualToString:controllerType]){
+    else if ([@"Test Detail Control" isEqualToString:controllerType]){
+        HNYTDetailViewController *controller = [[HNYTDetailViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
     }
     else if ([@"Test json" isEqualToString:controllerType]){
     }
@@ -175,6 +178,9 @@
 #pragma mark - init data for the table view controller
 - (void)initData{
     
+    
+    NSDictionary *detailDic = [NSDictionary dictionaryWithObjectsAndKeys:@"Test Detail Control ",@"title",@"Test Detail Control",@"type", nil];
+    [self.dataList addObject:detailDic];
     
     NSDictionary *getIP = [NSDictionary dictionaryWithObjectsAndKeys:@"Get Ip ",@"title",@"Get Ip",@"type", nil];
     [self.dataList addObject:getIP];

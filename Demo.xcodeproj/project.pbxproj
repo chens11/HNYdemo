@@ -68,6 +68,9 @@
 		CA0FB95818F9801000BC251D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA0FB95618F9801000BC251D /* InfoPlist.strings */; };
 		CA0FB95A18F9801000BC251D /* DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0FB95918F9801000BC251D /* DemoTests.m */; };
 		CA0FB96518F9877C00BC251D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0FB96418F9877C00BC251D /* MainViewController.m */; };
+		CA68CA9D197984BC0062B8E7 /* HNYDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA68CA9C197984BC0062B8E7 /* HNYDetailTableViewController.m */; };
+		CA68CAA21979857C0062B8E7 /* HNYDetailItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA68CAA11979857C0062B8E7 /* HNYDetailItemModel.m */; };
+		CA68CAA6197989D40062B8E7 /* HNYTDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA68CAA5197989D40062B8E7 /* HNYTDetailViewController.m */; };
 		CA90E4DF19153F7900237A99 /* HNYPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03328D471900DE18006C5461 /* HNYPopoverView.m */; };
 		CAA6B6BD190BFC2500D4192B /* HNYTRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA6B6BC190BFC2500D4192B /* HNYTRefreshTableViewController.m */; };
 		CAA6B6C9190C0D9400D4192B /* HNYActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA6B6C0190C0D9400D4192B /* HNYActionSheet.m */; };
@@ -213,6 +216,13 @@
 		CA0FB95918F9801000BC251D /* DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoTests.m; sourceTree = "<group>"; };
 		CA0FB96318F9877C00BC251D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		CA0FB96418F9877C00BC251D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		CA68CA9B197984BC0062B8E7 /* HNYDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYDetailTableViewController.h; sourceTree = "<group>"; };
+		CA68CA9C197984BC0062B8E7 /* HNYDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYDetailTableViewController.m; sourceTree = "<group>"; };
+		CA68CAA01979857C0062B8E7 /* HNYDetailItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYDetailItemModel.h; sourceTree = "<group>"; };
+		CA68CAA11979857C0062B8E7 /* HNYDetailItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYDetailItemModel.m; sourceTree = "<group>"; };
+		CA68CAA3197987F70062B8E7 /* HNYPublicDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYPublicDelegate.h; sourceTree = "<group>"; };
+		CA68CAA4197989D40062B8E7 /* HNYTDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYTDetailViewController.h; sourceTree = "<group>"; };
+		CA68CAA5197989D40062B8E7 /* HNYTDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYTDetailViewController.m; sourceTree = "<group>"; };
 		CAA6B6BB190BFC2500D4192B /* HNYTRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYTRefreshTableViewController.h; sourceTree = "<group>"; };
 		CAA6B6BC190BFC2500D4192B /* HNYTRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYTRefreshTableViewController.m; sourceTree = "<group>"; };
 		CAA6B6BF190C0D9400D4192B /* HNYActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYActionSheet.h; sourceTree = "<group>"; };
@@ -518,6 +528,7 @@
 		CA0FB93618F9800F00BC251D /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				CA68CAA3197987F70062B8E7 /* HNYPublicDelegate.h */,
 				CA0FB93F18F9800F00BC251D /* AppDelegate.h */,
 				CA0FB94018F9800F00BC251D /* AppDelegate.m */,
 				CA0FB94518F9801000BC251D /* Images.xcassets */,
@@ -557,6 +568,19 @@
 				CA0FB95618F9801000BC251D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CA68CA9A197984BC0062B8E7 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CA68CAA01979857C0062B8E7 /* HNYDetailItemModel.h */,
+				CA68CAA11979857C0062B8E7 /* HNYDetailItemModel.m */,
+				CA68CA9B197984BC0062B8E7 /* HNYDetailTableViewController.h */,
+				CA68CA9C197984BC0062B8E7 /* HNYDetailTableViewController.m */,
+				CA68CAA4197989D40062B8E7 /* HNYTDetailViewController.h */,
+				CA68CAA5197989D40062B8E7 /* HNYTDetailViewController.m */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		CAA6B6BE190C0D9400D4192B /* ActionSheet */ = {
@@ -620,6 +644,7 @@
 		CAE7A1CC18FAEAB800213ACF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CA68CA9A197984BC0062B8E7 /* Detail */,
 				033A297B1976328A00016157 /* Socket */,
 				035D73931974C263005E3FCE /* MultipleTask */,
 				03FC4E2319669E2400E58165 /* Thread */,
@@ -794,6 +819,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA68CAA21979857C0062B8E7 /* HNYDetailItemModel.m in Sources */,
 				03836F481918C83300B771F8 /* HNYUser.m in Sources */,
 				CA90E4DF19153F7900237A99 /* HNYPopoverView.m in Sources */,
 				037D7D63195D6A090086C770 /* RSA.m in Sources */,
@@ -811,6 +837,7 @@
 				035D739B1974D01F005E3FCE /* HNYStatusBar.m in Sources */,
 				0348925C1919D0B100A4E605 /* HNYTCoreData.xcdatamodeld in Sources */,
 				037D7D8A195D70C40086C770 /* ELCAssetCell.m in Sources */,
+				CA68CAA6197989D40062B8E7 /* HNYTDetailViewController.m in Sources */,
 				03836F451918BA0200B771F8 /* HNYTArchivingViewController.m in Sources */,
 				034892621919DB8200A4E605 /* UserEntity.m in Sources */,
 				035D73981974C2A0005E3FCE /* HNYMulLocationViewController.m in Sources */,
@@ -825,6 +852,7 @@
 				CA0FB93D18F9800F00BC251D /* main.m in Sources */,
 				037D7D88195D70C40086C770 /* ELCAlbumPickerController.m in Sources */,
 				03836F4E1918D5B900B771F8 /* HNYTCoreDataViewController.m in Sources */,
+				CA68CA9D197984BC0062B8E7 /* HNYDetailTableViewController.m in Sources */,
 				039E35A31921F01C00AC0325 /* HNYJSONUitls.m in Sources */,
 				CAA6B6BD190BFC2500D4192B /* HNYTRefreshTableViewController.m in Sources */,
 				038070D3191B6177002C5054 /* NSObject+SBJSON.m in Sources */,
