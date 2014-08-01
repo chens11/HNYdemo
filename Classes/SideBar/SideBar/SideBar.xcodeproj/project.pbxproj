@@ -211,6 +211,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = chenzq;
 				TargetAttributes = {
+					033075A719206EF10004BF23 = {
+						DevelopmentTeam = X78J75TA52;
+					};
 					033075C219206EF20004BF23 = {
 						TestTargetID = 033075A719206EF10004BF23;
 					};
@@ -381,6 +384,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SideBar/SideBar-Prefix.pch";
 				INFOPLIST_FILE = "SideBar/SideBar-Info.plist";
@@ -395,6 +399,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SideBar/SideBar-Prefix.pch";
 				INFOPLIST_FILE = "SideBar/SideBar-Info.plist";
@@ -463,6 +468,7 @@
 				033075D619206EF20004BF23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		033075D719206EF20004BF23 /* Build configuration list for PBXNativeTarget "SideBarTests" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +477,7 @@
 				033075D919206EF20004BF23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
