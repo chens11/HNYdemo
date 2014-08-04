@@ -24,6 +24,7 @@ typedef enum HNYViewType{
     MultiFunctionTextViewComBox = 12,//iphone
     CustomerDropDownTable = 13,//自定义下拉列表
     CustomerChoiceView = 14,//自定义选择空间
+    ImageView = 15,//
 }HNYViewType;
 
 @interface HNYDetailItemModel : NSObject
@@ -59,6 +60,8 @@ typedef enum HNYViewType{
 @property (nonatomic,strong) UIColor *backGroundColor;
 //控件透明效果
 @property (nonatomic) float alpha;
+// default is NSLeftTextAlignment
+@property(nonatomic)NSTextAlignment textAlignment;
 //控件背景图片
 @property (nonatomic,strong) UIImage *backGroundImage;
 //控件所用的键盘回车键类型

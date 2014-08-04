@@ -132,6 +132,7 @@
     if (itemVO.viewType == TextView) {
         UITextView *textView = [[UITextView alloc] init];
         textView.editable = itemVO.editable;
+        textView.textAlignment = itemVO.textAlignment;
         textView.backgroundColor = itemVO.backGroundColor;
         textView.text = itemVO.textValue;
         textView.delegate = target;
@@ -274,12 +275,19 @@
 
     else if (itemVO.viewType == Label) {
         UILabel *label = [[UILabel alloc] init];
+        label.textAlignment = itemVO.textAlignment;
         label.backgroundColor = itemVO.backGroundColor;
         label.text = itemVO.textValue;
         label.font = [UIFont systemFontOfSize:itemVO.fontSize];
         label.textColor = itemVO.textColor;
         label.numberOfLines = 0;
         return label;
+    }
+    else if (itemVO.viewType == ImageView) {
+        UIImageView *imgView = [[UIImageView alloc] init];
+        imgView.backgroundColor = itemVO.backGroundColor;
+        imgView.image = itemVO.value;
+        return imgView;
     }
     else if (itemVO.viewType == Switch) {
         UISwitch *switchControl = [[UISwitch alloc] init];
