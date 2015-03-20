@@ -17,13 +17,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    __autoreleasing id test;
-    @autoreleasepool {
-        NSString *str = @"dd";
-        test = str;
-        NSLog(@"obj = %@",test);
+    id __weak obj1;
+    {
+        id obj = [[NSObject alloc] init];
+        obj1 = obj;
+        NSLog(@"%@",obj1);
     }
-    NSLog(@"obj = %@",test);
+    NSLog(@"%@",obj1);
 
     // Do any additional setup after loading the view.
 }

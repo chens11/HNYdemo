@@ -16,6 +16,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    id __unsafe_unretained obj1;
+    {
+        id obj = [[NSObject alloc] init];
+        obj1 = obj;
+        NSLog(@"%@",obj1);
+        [obj release];
+    }
+    
+    NSLog(@"%@",obj1);
     // Do any additional setup after loading the view.
 }
 
