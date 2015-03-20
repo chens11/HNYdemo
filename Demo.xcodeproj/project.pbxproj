@@ -53,6 +53,7 @@
 		039E35A01921BE6E00AC0325 /* HNYTJSONViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 039E359F1921BE6E00AC0325 /* HNYTJSONViewController.m */; };
 		039E35A31921F01C00AC0325 /* HNYJSONUitls.m in Sources */ = {isa = PBXBuildFile; fileRef = 039E35A21921F01C00AC0325 /* HNYJSONUitls.m */; };
 		039E35A7192209AE00AC0325 /* HNTModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 039E35A6192209AE00AC0325 /* HNTModel.m */; };
+		55D41A771ABC18F2001587AD /* HNYARCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D41A761ABC18F2001587AD /* HNYARCViewController.m */; };
 		CA0FB92F18F9800F00BC251D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0FB92E18F9800F00BC251D /* Foundation.framework */; };
 		CA0FB93118F9800F00BC251D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0FB93018F9800F00BC251D /* CoreGraphics.framework */; };
 		CA0FB93318F9800F00BC251D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0FB93218F9800F00BC251D /* UIKit.framework */; };
@@ -197,6 +198,8 @@
 		039E35A21921F01C00AC0325 /* HNYJSONUitls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYJSONUitls.m; sourceTree = "<group>"; };
 		039E35A5192209AE00AC0325 /* HNTModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNTModel.h; sourceTree = "<group>"; };
 		039E35A6192209AE00AC0325 /* HNTModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNTModel.m; sourceTree = "<group>"; };
+		55D41A751ABC18F2001587AD /* HNYARCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYARCViewController.h; sourceTree = "<group>"; };
+		55D41A761ABC18F2001587AD /* HNYARCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYARCViewController.m; sourceTree = "<group>"; };
 		CA0FB92B18F9800F00BC251D /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0FB92E18F9800F00BC251D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CA0FB93018F9800F00BC251D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -490,6 +493,15 @@
 			path = Thread;
 			sourceTree = "<group>";
 		};
+		55D41A721ABC18D7001587AD /* ARC */ = {
+			isa = PBXGroup;
+			children = (
+				55D41A751ABC18F2001587AD /* HNYARCViewController.h */,
+				55D41A761ABC18F2001587AD /* HNYARCViewController.m */,
+			);
+			path = ARC;
+			sourceTree = "<group>";
+		};
 		CA0FB92218F9800F00BC251D = {
 			isa = PBXGroup;
 			children = (
@@ -644,6 +656,7 @@
 		CAE7A1CC18FAEAB800213ACF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				55D41A721ABC18D7001587AD /* ARC */,
 				CA68CA9A197984BC0062B8E7 /* Detail */,
 				033A297B1976328A00016157 /* Socket */,
 				035D73931974C263005E3FCE /* MultipleTask */,
@@ -844,6 +857,7 @@
 				039E35A7192209AE00AC0325 /* HNTModel.m in Sources */,
 				CAA6B6C9190C0D9400D4192B /* HNYActionSheet.m in Sources */,
 				03863E4B19108BF80098AC3E /* HNYTActionSheetViewController.m in Sources */,
+				55D41A771ABC18F2001587AD /* HNYARCViewController.m in Sources */,
 				038070D8191B6177002C5054 /* SBJsonWriter.m in Sources */,
 				0374411718FB848500736C08 /* EGORefreshTableFooterView.m in Sources */,
 				03836F521918DCF200B771F8 /* HNYTFileViewController.m in Sources */,

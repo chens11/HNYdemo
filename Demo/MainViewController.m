@@ -20,6 +20,7 @@
 #import "HNYMulLocationViewController.h"
 #import "HNYGetIPViewController.h"
 #import "HNYTDetailViewController.h"
+#import "HNYARCViewController.h"
 
 @interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) NSMutableArray *dataList;
@@ -161,7 +162,9 @@
         HNYTDetailViewController *controller = [[HNYTDetailViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
     }
-    else if ([@"Test json" isEqualToString:controllerType]){
+    else if ([@"Test ARC Control" isEqualToString:controllerType]){
+        HNYARCViewController *controller = [[HNYARCViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
     }
     else if ([@"Test json" isEqualToString:controllerType]){
     }
@@ -178,6 +181,9 @@
 #pragma mark - init data for the table view controller
 - (void)initData{
     
+    
+    NSDictionary *ARC = [NSDictionary dictionaryWithObjectsAndKeys:@"Test ARC Control ",@"title",@"Test ARC Control",@"type", nil];
+    [self.dataList addObject:ARC];
     
     NSDictionary *detailDic = [NSDictionary dictionaryWithObjectsAndKeys:@"Test Detail Control ",@"title",@"Test Detail Control",@"type", nil];
     [self.dataList addObject:detailDic];
