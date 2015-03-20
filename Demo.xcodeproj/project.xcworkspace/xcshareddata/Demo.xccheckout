@@ -10,41 +10,31 @@
 	<string>Demo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>13018DF1-E9B0-4F1E-8C6D-1F98AD85E0D2</key>
+		<key>729BADBA09C895143ED710DDC1181E94092994BF</key>
 		<string>https://github.com/chens11/HNYdemo.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Demo.xcodeproj/project.xcworkspace</string>
+	<string>Demo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>13018DF1-E9B0-4F1E-8C6D-1F98AD85E0D2</key>
+		<key>729BADBA09C895143ED710DDC1181E94092994BF</key>
 		<string>../..</string>
-		<key>F6903F1F-9AA7-46F3-8F80-48B85D47A08E</key>
-		<string>../../Classes/SideBar/SideBar</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/chens11/HNYdemo.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>13018DF1-E9B0-4F1E-8C6D-1F98AD85E0D2</string>
+	<string>729BADBA09C895143ED710DDC1181E94092994BF</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>13018DF1-E9B0-4F1E-8C6D-1F98AD85E0D2</string>
+			<string>729BADBA09C895143ED710DDC1181E94092994BF</string>
 			<key>IDESourceControlWCCName</key>
 			<string>HNYdemo</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F6903F1F-9AA7-46F3-8F80-48B85D47A08E</string>
-			<key>IDESourceControlWCCName</key>
-			<string>SideBar</string>
 		</dict>
 	</array>
 </dict>
