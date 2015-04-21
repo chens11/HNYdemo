@@ -22,6 +22,7 @@
 #import "HNYTDetailViewController.h"
 #import "HNYARCViewController.h"
 #import "HNYFNOARCViewController.h"
+#import "HNYAntiAliasingViewController.h"
 
 @interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) NSMutableArray *dataList;
@@ -171,7 +172,9 @@
         HNYFNOARCViewController *controller = [[HNYFNOARCViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
     }
-    else if ([@"Test json" isEqualToString:controllerType]){
+    else if ([@"Test Anti Aliasing" isEqualToString:controllerType]){
+        HNYAntiAliasingViewController *controller = [[HNYAntiAliasingViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
     }
     else if ([@"Test json" isEqualToString:controllerType]){
     }
@@ -184,6 +187,9 @@
 #pragma mark - init data for the table view controller
 - (void)initData{
     
+    
+    NSDictionary *antiAliasing = [NSDictionary dictionaryWithObjectsAndKeys:@"Test Anti Aliasing ",@"title",@"Test Anti Aliasing",@"type", nil];
+    [self.dataList addObject:antiAliasing];
     
     NSDictionary *FNOARC = [NSDictionary dictionaryWithObjectsAndKeys:@"Test FNO ARC Control ",@"title",@"Test FNO ARC Control",@"type", nil];
     [self.dataList addObject:FNOARC];

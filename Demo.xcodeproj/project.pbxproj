@@ -55,6 +55,8 @@
 		039E35A7192209AE00AC0325 /* HNTModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 039E35A6192209AE00AC0325 /* HNTModel.m */; };
 		55D41A771ABC18F2001587AD /* HNYARCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D41A761ABC18F2001587AD /* HNYARCViewController.m */; };
 		55D41A7A1ABC1998001587AD /* HNYFNOARCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D41A791ABC1998001587AD /* HNYFNOARCViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		615DFBA31AE0B74E0043884A /* HNYAntiAliasingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 615DFBA21AE0B74E0043884A /* HNYAntiAliasingViewController.m */; };
+		615DFBA61AE0BC7A0043884A /* HNYLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 615DFBA51AE0BC7A0043884A /* HNYLabel.m */; };
 		CA0FB92F18F9800F00BC251D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0FB92E18F9800F00BC251D /* Foundation.framework */; };
 		CA0FB93118F9800F00BC251D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0FB93018F9800F00BC251D /* CoreGraphics.framework */; };
 		CA0FB93318F9800F00BC251D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0FB93218F9800F00BC251D /* UIKit.framework */; };
@@ -203,6 +205,10 @@
 		55D41A761ABC18F2001587AD /* HNYARCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYARCViewController.m; sourceTree = "<group>"; };
 		55D41A781ABC1998001587AD /* HNYFNOARCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYFNOARCViewController.h; sourceTree = "<group>"; };
 		55D41A791ABC1998001587AD /* HNYFNOARCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYFNOARCViewController.m; sourceTree = "<group>"; };
+		615DFBA11AE0B74E0043884A /* HNYAntiAliasingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYAntiAliasingViewController.h; sourceTree = "<group>"; };
+		615DFBA21AE0B74E0043884A /* HNYAntiAliasingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYAntiAliasingViewController.m; sourceTree = "<group>"; };
+		615DFBA41AE0BC7A0043884A /* HNYLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNYLabel.h; sourceTree = "<group>"; };
+		615DFBA51AE0BC7A0043884A /* HNYLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNYLabel.m; sourceTree = "<group>"; };
 		CA0FB92B18F9800F00BC251D /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0FB92E18F9800F00BC251D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CA0FB93018F9800F00BC251D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -507,6 +513,17 @@
 			path = ARC;
 			sourceTree = "<group>";
 		};
+		615DFB9E1AE0B7300043884A /* AntiAliasing */ = {
+			isa = PBXGroup;
+			children = (
+				615DFBA11AE0B74E0043884A /* HNYAntiAliasingViewController.h */,
+				615DFBA21AE0B74E0043884A /* HNYAntiAliasingViewController.m */,
+				615DFBA41AE0BC7A0043884A /* HNYLabel.h */,
+				615DFBA51AE0BC7A0043884A /* HNYLabel.m */,
+			);
+			path = AntiAliasing;
+			sourceTree = "<group>";
+		};
 		CA0FB92218F9800F00BC251D = {
 			isa = PBXGroup;
 			children = (
@@ -661,6 +678,7 @@
 		CAE7A1CC18FAEAB800213ACF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				615DFB9E1AE0B7300043884A /* AntiAliasing */,
 				55D41A721ABC18D7001587AD /* ARC */,
 				CA68CA9A197984BC0062B8E7 /* Detail */,
 				033A297B1976328A00016157 /* Socket */,
@@ -851,6 +869,7 @@
 				037D7D8B195D70C40086C770 /* ELCAssetTablePicker.m in Sources */,
 				CAA6B6D7190C0DFB00D4192B /* HNYNavigationBar.m in Sources */,
 				CAA6B6CB190C0D9400D4192B /* HNYTableView.m in Sources */,
+				615DFBA31AE0B74E0043884A /* HNYAntiAliasingViewController.m in Sources */,
 				039E359B1921BDA000AC0325 /* HNTTestModel.m in Sources */,
 				035D739B1974D01F005E3FCE /* HNYStatusBar.m in Sources */,
 				0348925C1919D0B100A4E605 /* HNYTCoreData.xcdatamodeld in Sources */,
@@ -879,6 +898,7 @@
 				0374411418FB7E0C00736C08 /* EGORefreshTableHeaderView.m in Sources */,
 				03328D4C190101F0006C5461 /* PopoverView.m in Sources */,
 				037D7D8C195D70C40086C770 /* ELCImagePickerController.m in Sources */,
+				615DFBA61AE0BC7A0043884A /* HNYLabel.m in Sources */,
 				CAA6B6D6190C0DFA00D4192B /* HNYBaseViewController.m in Sources */,
 				03836F3B1918739C00B771F8 /* HNYSQLite3UserViewController.m in Sources */,
 				038070D4191B6177002C5054 /* NSString+SBJSON.m in Sources */,
